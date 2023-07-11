@@ -1,0 +1,51 @@
+{
+  "quiz": [
+    {
+      "id": "q1",
+      "multi-answer": "False",
+      "question": "Which one is correct team name in NBA?",
+      "options": [
+        "New York Bulls",
+        "Los Angeles Kings",
+        "Golden State Warriros",
+        "Huston Rocket"
+      ],
+      "answer": "Huston Rocket"
+    },
+    {
+      "id": "q2",
+      "multi-answer": "True",
+      "question": "Greek letters?",
+      "options": ["Alfa", "Beta", "Gamma", "Delta"],
+      "answer": ["Delta", "Beta"]
+    },
+    {
+      "id": "q3",
+      "multi-answer": "False",
+      "question": "Your sex?",
+      "options": ["Male", "Female"],
+      "answer": "Male"
+    },
+    {
+      "id": "q4",
+      "multi-answer": "False",
+      "question": "Who is president of the USA?",
+      "options": ["Byden", "Duda", "Reagan", "McCartney"],
+      "answer": "Byden"
+    },
+    {
+      "id": "q5",
+      "multi-answer": "True",
+      "question": "Who are your friends?",
+      "options": ["Dan", "Sam", "Tom", "Paul"],
+      "answer": ["Dan", "Sam"]
+    },
+    {
+      "id": "q6",
+      "multi-answer": "True",
+      "question": "Who is putin?",
+      "options": ["huilo", "tupin", "trupin", "prutin"],
+      "answer": ["huilo", "tupin", "trupin", "prutin"]
+    }
+  ]
+}
