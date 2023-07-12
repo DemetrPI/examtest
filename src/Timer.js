@@ -7,6 +7,7 @@ const Timer = ({ timeLeft, isPaused, onFinish }) => {
   useEffect(() => {
     setRemainingTime(timeLeft);
   }, [timeLeft]);
+  
 
   useEffect(() => {
     if (isPaused || remainingTime <= 0) {

@@ -5,8 +5,7 @@ import ProgressBar from "./ProgressBar";
 import Timer from "./Timer";
 import Result from "./Result";
 import { ChakraProvider } from "@chakra-ui/react";
-import questionsData from './quest.json';
-
+import questionsData from "./quest.json";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -15,9 +14,10 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 60); // 1 hour in seconds
+  const [timeLeft, setTimeLeft] = useState(1 * 60);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
+  const [timerKey, setTimerKey] = useState(0); // Add this line
 
   const handleRetake = () => {
     // Reset the state
@@ -27,22 +27,22 @@ const Quiz = () => {
     setScore(0);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(60 * 60);
-  
+    setTimeLeft(1 * 60);
+    setTimerKey((prevKey) => prevKey + 1); // Increment the key
+
     // Use the questions data directly
     const shuffledQuestions = shuffleArray(questionsData.quiz);
     setQuestions(shuffledQuestions.slice(0, 5));
     setCurrentQuestion(shuffledQuestions[0]);
   };
-  
+
   useEffect(() => {
     // Use the questions data directly
     const shuffledQuestions = shuffleArray(questionsData.quiz);
     setQuestions(shuffledQuestions.slice(0, 5));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
-    
-  
+
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       event.preventDefault();
@@ -80,42 +80,41 @@ const Quiz = () => {
   };
 
   // Function to handle the submission of an answer
-const handleSubmit = () => {
+  const handleSubmit = () => {
     let questionScore = 0;
-  if (currentQuestion["multi-answer"]) {
-    const correctAnswers = currentQuestion.answer;
-    const correctSelected = selectedOptions.filter((option) =>
-      correctAnswers.includes(option)
-    );
-    questionScore = (10 / correctAnswers.length) * correctSelected.length;
-  } else {
-    if (selectedOptions[0] === currentQuestion.answer) {
-      questionScore = 10;
+    if (currentQuestion["multi-answer"]) {
+      const correctAnswers = currentQuestion.answer;
+      const correctSelected = selectedOptions.filter((option) =>
+        correctAnswers.includes(option)
+      );
+      questionScore = (10 / correctAnswers.length) * correctSelected.length;
+    } else {
+      if (selectedOptions[0] === currentQuestion.answer) {
+        questionScore = 10;
+      }
     }
-  }
-  setScore(score + questionScore);
+    setScore(score + questionScore);
 
-  // Move to the next question
-  const currentIndex = questions.indexOf(currentQuestion);
-  if (currentIndex < questions.length - 1) {
-    setCurrentQuestion(questions[currentIndex + 1]);
-  } else {
-    setIsFinished(true);  // If there are no more questions, finish the quiz
-  }
+    // Move to the next question
+    const currentIndex = questions.indexOf(currentQuestion);
+    if (currentIndex < questions.length - 1) {
+      setCurrentQuestion(questions[currentIndex + 1]);
+    } else {
+      setIsFinished(true); // If there are no more questions, finish the quiz
+    }
 
-  // User tries to submit an answer without selecting an option
-  if (selectedOptions.length === 0) {
-    toast({
-      title: "No option selected.",
-      description: "Please select an option before submitting.",
-      status: "error",
-      duration: 3000,
-      isClosable: true,
-    });
-    return;
-  }
-};
-
+    // User tries to submit an answer without selecting an option
+    if (selectedOptions.length === 0) {
+      toast({
+        title: "No option selected.",
+        description: "Please select an option before submitting.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+  };
 
   // Function to handle the skipping of a question
   const handleSkip = () => {
@@ -125,7 +124,6 @@ const handleSubmit = () => {
       currentQuestion,
     ]);
   };
-
 
   // Function to handle the pausing and resuming of the quiz
   const handlePauseResume = () => {
@@ -186,6 +184,7 @@ const handleSubmit = () => {
             </SlideFade>
             <SlideFade in={true} offsetY="20px">
               <Timer
+                key={timerKey} // Use the key here
                 timeLeft={timeLeft}
                 isPaused={isPaused}
                 onFinish={handleFinish}
@@ -204,21 +203,21 @@ const handleSubmit = () => {
                   onSkip={handleSkip}
                 />
               </SlideFade>
-              
+            )}
+            {isFinished && <Button onClick={handleRetake}>Retake Quiz</Button>}
+            {isFinished && (
+              <Button onClick={handleClearPreviousResults}>
+                Clear Previous Results
+              </Button>
             )}
             {isFinished && (
-  <Button onClick={handleRetake}>Retake Quiz</Button>
-)}
-{isFinished && (
-  <Button onClick={handleClearPreviousResults}>Clear Previous Results</Button>
-)}
-{isFinished && (
-  <Button onClick={handleReview}>Review Answers</Button>
-)}
-{isFinished && (
-  <Button onClick={handleViewPreviousResults}>View Previous Results</Button>
-)}
-
+              <Button onClick={handleReview}>Review Answers</Button>
+            )}
+            {isFinished && (
+              <Button onClick={handleViewPreviousResults}>
+                View Previous Results
+              </Button>
+            )}
           </>
         )}
       </VStack>
