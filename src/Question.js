@@ -1,47 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Checkbox, Radio, RadioGroup, CheckboxGroup, Text, VStack, HStack, SlideFade } from '@chakra-ui/react';
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  CheckboxGroup,
+  Text,
+  VStack,
+  HStack,
+  SlideFade,
+} from "@chakra-ui/react";
 
-const Question = ({ question, selectedOptions, onOptionSelect, onSubmit, onSkip }) => {
+const Question = ({
+  question,
+  selectedOptions,
+  onOptionSelect,
+  onSubmit,
+  onSkip,
+}) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     // Convert the options to an array of objects with a selected property
-    setOptions(question.options.map(option => ({ value: option, selected: selectedOptions.includes(option) })));
+    setOptions(
+      question.options.map((option) => ({
+        value: option,
+        selected: selectedOptions.includes(option),
+      }))
+    );
   }, [question, selectedOptions]);
 
   const handleOptionSelect = (optionValue) => {
-    if (question['multi-answer']) {
+    let newOptions;
+    if (question["multi-answer"] === "True") {
       // If it's a multiple-answer question, toggle the selected state of the option
-      setOptions(options.map(option => option.value === optionValue ? { ...option, selected: !option.selected } : option));
+      newOptions = options.map((option) =>
+        option.value === optionValue
+          ? { ...option, selected: !option.selected }
+          : option
+      );
     } else {
       // If it's a single-answer question, deselect all other options
-      setOptions(options.map(option => ({ ...option, selected: option.value === optionValue })));
+      newOptions = options.map((option) => ({
+        ...option,
+        selected: option.value === optionValue,
+      }));
     }
+
+    setOptions(newOptions);
+
+    // Update the selectedOptions state in the Quiz component
+    const newSelectedOptions = newOptions
+      .filter((option) => option.selected)
+      .map((option) => option.value);
+    onOptionSelect(newSelectedOptions);
   };
 
   const handleOptionSubmit = () => {
-    const selectedOptions = options.filter(option => option.selected).map(option => option.value);
+    const selectedOptions = options
+      .filter((option) => option.selected)
+      .map((option) => option.value);
     onSubmit(selectedOptions);
   };
 
   return (
     <VStack spacing={4} align="stretch">
       <Text>{question.question}</Text>
-      {question['multi-answer'] ? (
-        <CheckboxGroup value={selectedOptions} onChange={onOptionSelect}>
-          {options.map(option => (
+      {question["multi-answer"] === "True" ? (
+        <CheckboxGroup value={selectedOptions}>
+          {options.map((option) => (
             <SlideFade in={true} offsetY="20px" key={option.value}>
-              <Checkbox isChecked={option.selected} onChange={() => handleOptionSelect(option.value)}>
+              <Checkbox
+                isChecked={option.selected}
+                onChange={() => handleOptionSelect(option.value)}
+              >
                 {option.value}
               </Checkbox>
             </SlideFade>
           ))}
         </CheckboxGroup>
       ) : (
-        <RadioGroup value={selectedOptions[0]} onChange={onOptionSelect}>
-          {options.map(option => (
+        <RadioGroup value={selectedOptions[0]}>
+          {options.map((option) => (
             <SlideFade in={true} offsetY="20px" key={option.value}>
-              <Radio isChecked={option.selected} onChange={() => handleOptionSelect(option.value)}>
+              <Radio
+                isChecked={option.selected}
+                onChange={() => handleOptionSelect(option.value)}
+              >
                 {option.value}
               </Radio>
             </SlideFade>

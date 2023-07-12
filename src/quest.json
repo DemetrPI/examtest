@@ -2,8 +2,8 @@
   "quiz": [
     {
       "id": "q1",
-      "multi-answer": "False",
       "question": "Which one is correct team name in NBA?",
+      "multi-answer": "False",
       "options": [
         "New York Bulls",
         "Los Angeles Kings",
@@ -14,15 +14,15 @@
     },
     {
       "id": "q2",
-      "multi-answer": "True",
       "question": "Greek letters?",
+      "multi-answer": "True",
       "options": ["Alfa", "Beta", "Gamma", "Delta"],
       "answer": ["Delta", "Beta"]
     },
     {
       "id": "q3",
-      "multi-answer": "False",
       "question": "Your sex?",
+      "multi-answer": "False",
       "options": ["Male", "Female"],
       "answer": "Male"
     },

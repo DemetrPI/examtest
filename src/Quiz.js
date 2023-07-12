@@ -81,19 +81,7 @@ const Quiz = () => {
 
   // Function to handle the submission of an answer
 const handleSubmit = () => {
-  // User tries to submit an answer without selecting an option
-  if (selectedOptions.length === 0) {
-    toast({
-      title: "No option selected.",
-      description: "Please select an option before submitting.",
-      status: "error",
-      duration: 3000,
-      isClosable: true,
-    });
-    return;
-  }
-
-  let questionScore = 0;
+    let questionScore = 0;
   if (currentQuestion["multi-answer"]) {
     const correctAnswers = currentQuestion.answer;
     const correctSelected = selectedOptions.filter((option) =>
@@ -114,6 +102,18 @@ const handleSubmit = () => {
   } else {
     setIsFinished(true);  // If there are no more questions, finish the quiz
   }
+
+  // User tries to submit an answer without selecting an option
+  if (selectedOptions.length === 0) {
+    toast({
+      title: "No option selected.",
+      description: "Please select an option before submitting.",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    });
+    return;
+  }
 };
 
 
@@ -125,6 +125,7 @@ const handleSubmit = () => {
       currentQuestion,
     ]);
   };
+
 
   // Function to handle the pausing and resuming of the quiz
   const handlePauseResume = () => {
@@ -203,7 +204,21 @@ const handleSubmit = () => {
                   onSkip={handleSkip}
                 />
               </SlideFade>
+              
             )}
+            {isFinished && (
+  <Button onClick={handleRetake}>Retake Quiz</Button>
+)}
+{isFinished && (
+  <Button onClick={handleClearPreviousResults}>Clear Previous Results</Button>
+)}
+{isFinished && (
+  <Button onClick={handleReview}>Review Answers</Button>
+)}
+{isFinished && (
+  <Button onClick={handleViewPreviousResults}>View Previous Results</Button>
+)}
+
           </>
         )}
       </VStack>
