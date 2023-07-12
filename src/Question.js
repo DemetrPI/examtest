@@ -56,12 +56,7 @@ const Question = ({
     onOptionSelect(newSelectedOptions);
   };
 
-  const handleOptionSubmit = () => {
-    const selectedOptions = options
-      .filter((option) => option.selected)
-      .map((option) => option.value);
-    onSubmit(selectedOptions);
-  };
+
 
   return (
     <VStack spacing={4} align="stretch">

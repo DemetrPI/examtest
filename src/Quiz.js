@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Button, useToast, VStack, SlideFade } from "@chakra-ui/react";
+import {
+  Button,
+  useToast,
+  VStack,
+  SlideFade,
+  ChakraProvider,
+} from "@chakra-ui/react";
 import Question from "./Question";
 import ProgressBar from "./ProgressBar";
 import Timer from "./Timer";
 import Result from "./Result";
-import { ChakraProvider } from "@chakra-ui/react";
 import questionsData from "./quest.json";
 
 const Quiz = () => {
@@ -17,7 +22,7 @@ const Quiz = () => {
   const [timeLeft, setTimeLeft] = useState(1 * 60);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
-  const [timerKey, setTimerKey] = useState(0); // Add this line
+  const [timerKey, setTimerKey] = useState(0);
 
   const handleRetake = () => {
     // Reset the state
@@ -48,17 +53,11 @@ const Quiz = () => {
       event.preventDefault();
       event.returnValue = "";
     };
-
     window.addEventListener("beforeunload", handleBeforeUnload);
-
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
-
-  const handleStart = () => {
-    setIsStarted(true);
-  };
 
   // Function to shuffle an array
   const shuffleArray = (array) => {
@@ -101,6 +100,7 @@ const Quiz = () => {
       setCurrentQuestion(questions[currentIndex + 1]);
     } else {
       setIsFinished(true); // If there are no more questions, finish the quiz
+      handleFinish(); // Save the results when the quiz is finished
     }
 
     // User tries to submit an answer without selecting an option
@@ -130,7 +130,7 @@ const Quiz = () => {
     setIsPaused(!isPaused);
   };
 
-  // Function to handle the finishing of the quiz
+  // Function to handle the finishing of the quiz and save the results
   const handleFinish = () => {
     setIsFinished(true);
     // Store the result in local storage
@@ -140,10 +140,6 @@ const Quiz = () => {
       "results",
       JSON.stringify([...previousResults, result])
     );
-
-    if (isFinished) {
-      return <Result score={score} questions={questions} />;
-    }
   };
 
   // Function to handle the review of answers
@@ -218,6 +214,11 @@ const Quiz = () => {
                 View Previous Results
               </Button>
             )}
+            {isFinished && (
+              <Result/>
+            )}
+            
+            
           </>
         )}
       </VStack>
