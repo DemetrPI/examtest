@@ -86,7 +86,9 @@ const Quiz = () => {
       const correctSelected = selectedOptions.filter((option) =>
         correctAnswers.includes(option)
       );
-      questionScore = (10 / correctAnswers.length) * correctSelected.length;
+      questionScore = parseFloat(
+        ((10 / correctAnswers.length) * correctSelected.length).toFixed(2)
+      );
     } else {
       if (selectedOptions[0] === currentQuestion.answer) {
         questionScore = 10;
@@ -215,10 +217,12 @@ const Quiz = () => {
               </Button>
             )}
             {isFinished && (
-              <Result/>
+              <Result
+                score={score}
+                questions={questions}
+                userAnswers={selectedOptions}
+              />
             )}
-            
-            
           </>
         )}
       </VStack>

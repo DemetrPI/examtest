@@ -56,8 +56,6 @@ const Question = ({
     onOptionSelect(newSelectedOptions);
   };
 
-
-
   return (
     <VStack spacing={4} align="stretch">
       <Text>{question.question}</Text>

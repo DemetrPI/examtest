@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Text } from '@chakra-ui/react';
+import React, { useState, useEffect } from "react";
+import { Text } from "@chakra-ui/react";
 
 const Timer = ({ timeLeft, isPaused, onFinish }) => {
   const [remainingTime, setRemainingTime] = useState(timeLeft);
@@ -7,7 +7,6 @@ const Timer = ({ timeLeft, isPaused, onFinish }) => {
   useEffect(() => {
     setRemainingTime(timeLeft);
   }, [timeLeft]);
-  
 
   useEffect(() => {
     if (isPaused || remainingTime <= 0) {
@@ -34,7 +33,9 @@ const Timer = ({ timeLeft, isPaused, onFinish }) => {
 const formatTime = (time) => {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
-  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  return `${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}`;
 };
 
 export default Timer;
