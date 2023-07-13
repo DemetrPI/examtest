@@ -48,13 +48,13 @@ const ResultModal = ({ isOpen, onClose, score, totalPoints }) => {
         />
 
         <ModalContent >
-          <ModalHeader bg={bgColor} textAlign="center">{headerMessage}</ModalHeader>
+          <ModalHeader bg={bgColor} textAlign="center" borderTopRadius = "md">{headerMessage}</ModalHeader>
           <ModalCloseButton onClick={onClose} />
           <ModalBody>
             <Text textAlign="center">{mainMessage}</Text>
             <Text textAlign="center">{footerMessage}</Text>
           </ModalBody>
-          <ModalFooter bg={bgColor}></ModalFooter>
+          <ModalFooter bg={bgColor} borderBottomRadius="md"></ModalFooter>
         </ModalContent>
       </Modal>
     </>
