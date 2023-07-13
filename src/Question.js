@@ -32,6 +32,11 @@ const Question = ({
     );
   }, [question, selectedOptions]);
 
+  // Reset selectedOptions when the question changes
+  useEffect(() => {
+    onOptionSelect([]);
+  }, [question, onOptionSelect]);
+
   const handleOptionSelect = (optionValue) => {
     let newOptions;
     if (question["multi-answer"] === "True") {
@@ -102,7 +107,7 @@ const Question = ({
         <Button onClick={onSkip}
           colorScheme="teal"
           isDisabled={isPaused || isFinished}
-        >Skip</Button>
+          >Skip</Button>
       </HStack>
     </VStack>
   );

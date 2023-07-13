@@ -184,6 +184,7 @@ const Quiz = () => {
     });
   };
 
+  const newLocal = "4";
   return (
     <ChakraProvider>
       <VStack spacing={8} align="center" p={8}>
@@ -245,7 +246,7 @@ const Quiz = () => {
               py={12}
               mb={2}
             >
-              <Wrap gap="4">
+              <Wrap gap={newLocal}>
                 {isFinished && (
                   <WrapItem>
                     <Button onClick={handleRetake} colorScheme="green">
