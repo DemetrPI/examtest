@@ -16,7 +16,9 @@ const Question = ({
   selectedOptions,
   onOptionSelect,
   onSubmit,
+  isPaused,
   onSkip,
+  isFinished
 }) => {
   const [options, setOptions] = useState([]);
 
@@ -89,9 +91,13 @@ const Question = ({
       <HStack>
         <Button onClick={onSubmit}
           colorScheme="green"
-        >Submit</Button>
+          isDisabled={isPaused || isFinished}
+        >
+          Submit</Button>
         <Button onClick={onSkip}
-          colorScheme="teal">Skip</Button>
+          colorScheme="teal"
+          isDisabled={isPaused || isFinished}
+          >Skip</Button>
       </HStack>
     </VStack>
   );

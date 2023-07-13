@@ -16,6 +16,7 @@ import Result from "./Result";
 import questionsData from "./quest.json";
 
 const Quiz = () => {
+  // state variables
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -28,6 +29,8 @@ const Quiz = () => {
   const [timerKey, setTimerKey] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [numAnswered, setNumAnswered] = useState(0);
+  const [isReview, setIsReview] = useState(false);
+
 
   const handleRetake = () => {
     // Reset the state
@@ -40,13 +43,14 @@ const Quiz = () => {
     setTimeLeft(1 * 60);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
+    setIsReview(0);
     setTimerKey((prevKey) => prevKey + 1); // Increment the key
-
     // Use the questions data directly
     const shuffledQuestions = shuffleArray(questionsData.quiz);
     setQuestions(shuffledQuestions.slice(0, 5));
     setCurrentQuestion(shuffledQuestions[0]);
   };
+
 
   useEffect(() => {
     // Use the questions data directly
@@ -54,6 +58,7 @@ const Quiz = () => {
     setQuestions(shuffledQuestions.slice(0, 5));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
+
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
@@ -66,6 +71,7 @@ const Quiz = () => {
     };
   }, []);
 
+
   // Function to shuffle an array
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -75,6 +81,8 @@ const Quiz = () => {
     return array;
   };
 
+
+  // Clear previous quiz results
   const handleClearPreviousResults = () => {
     localStorage.removeItem("results");
     toast({
@@ -85,8 +93,9 @@ const Quiz = () => {
     });
   };
 
+
+  // User tries to submit an answer without selecting an option check
   const handleSubmit = () => {
-    // User tries to submit an answer without selecting an option
     if (selectedOptions.length === 0) {
       toast({
         title: "No option selected.",
@@ -97,7 +106,6 @@ const Quiz = () => {
       });
       return;
     }
-
     let questionScore = 0;
     if (currentQuestion["multi-answer"]) {
       const correctAnswers = currentQuestion.answer;
@@ -113,7 +121,6 @@ const Quiz = () => {
       }
     }
     setScore(score + questionScore);
-
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestion(questions[nextQuestionIndex]);
@@ -121,25 +128,28 @@ const Quiz = () => {
     } else {
       setIsFinished(true);
     }
-
     setNumAnswered(numAnswered + 1);
   };
 
+
+  // Move the current question to the end of the questions array
   const handleSkip = () => {
-    // Move the current question to the end of the questions array
     const remainingQuestions = questions.filter(
       (question) => question !== currentQuestion
     );
     const newQuestions = [...remainingQuestions, currentQuestion];
     setQuestions(newQuestions);
-
     setCurrentQuestion(newQuestions[0]);
   };
 
+
+  // timer pause function
   const handlePauseResume = () => {
     setIsPaused(!isPaused);
   };
 
+
+  // finish test function
   const handleFinish = () => {
     setIsFinished(true);
     // Store the result in local storage
@@ -151,10 +161,14 @@ const Quiz = () => {
     );
   };
 
+
+  //Show quiz answers function
   const handleReview = () => {
-    setIsFinished(true);
+    setIsReview(prevIsReview => !prevIsReview);
   };
 
+
+  // Show previous quiz score 
   const handleViewPreviousResults = () => {
     const previousResults = JSON.parse(localStorage.getItem("results")) || [];
     previousResults.forEach((result, index) => {
@@ -217,6 +231,8 @@ const Quiz = () => {
                   onOptionSelect={setSelectedOptions}
                   onSubmit={handleSubmit}
                   onSkip={handleSkip}
+                  isPaused= {isPaused}
+                  isFinished={isFinished}
                 />
               </SlideFade>
             )}
@@ -240,22 +256,25 @@ const Quiz = () => {
                 )}
                 {isFinished && (
                   <WrapItem>
-                    <Button onClick={handleClearPreviousResults} colorScheme="red">
-                      Clear Previous Results
+                    <Button
+                      onClick={handleReview}
+                      colorScheme={isReview ? "blue" : "green"}>
+                      {isReview ? "Hide Results" : "Review Answers"}
                     </Button>
-                  </WrapItem>
-                )}
-                {isFinished && (
-                  <WrapItem>
-                    <Button onClick={handleReview} colorScheme="blue">
-                      Review Answers
-                    </Button>
+
                   </WrapItem>
                 )}
                 {isFinished && (
                   <WrapItem>
                     <Button onClick={handleViewPreviousResults} colorScheme="green">
-                      View Previous Results
+                      View Previous Quiz Scores
+                    </Button>
+                  </WrapItem>
+                )}
+                {isFinished && (
+                  <WrapItem>
+                    <Button onClick={handleClearPreviousResults} colorScheme="gray">
+                      Clear Previous Score
                     </Button>
                   </WrapItem>
                 )}
@@ -263,7 +282,7 @@ const Quiz = () => {
             </Box>
 
             {/* Result */}
-            {isFinished && (
+            {isReview && (
               <Result
                 score={score}
                 questions={questions}
