@@ -8,7 +8,7 @@ import {
   SlideFade,
   ChakraProvider,
   Wrap,
-  WrapItem
+  WrapItem,
 } from "@chakra-ui/react";
 import Question from "./Question";
 import Timer from "./Timer";
@@ -28,7 +28,6 @@ const Quiz = () => {
   const [timerKey, setTimerKey] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [numAnswered, setNumAnswered] = useState(0);
-
 
   const handleRetake = () => {
     // Reset the state
@@ -86,7 +85,6 @@ const Quiz = () => {
     });
   };
 
-  // Function to handle the submission of an answer
   const handleSubmit = () => {
     // User tries to submit an answer without selecting an option
     if (selectedOptions.length === 0) {
@@ -116,38 +114,32 @@ const Quiz = () => {
     }
     setScore(score + questionScore);
 
-    // Move to the next question
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestion(questions[nextQuestionIndex]);
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
-      setIsFinished(true);  // If there are no more questions, finish the quiz
+      setIsFinished(true);
     }
 
-    // Increase the number of answered questions
     setNumAnswered(numAnswered + 1);
   };
 
+  const handleSkip = () => {
+    // Move the current question to the end of the questions array
+    const remainingQuestions = questions.filter(
+      (question) => question !== currentQuestion
+    );
+    const newQuestions = [...remainingQuestions, currentQuestion];
+    setQuestions(newQuestions);
 
-// Function to handle the skipping of a question
-const handleSkip = () => {
-  // Move the current question to the end of the questions array
-  const remainingQuestions = questions.filter((question) => question !== currentQuestion);
-  const newQuestions = [...remainingQuestions, currentQuestion];
-  setQuestions(newQuestions);
+    setCurrentQuestion(newQuestions[0]);
+  };
 
-  // Move to the next question
-  setCurrentQuestion(newQuestions[0]);
-};
-
-
-  // Function to handle the pausing and resuming of the quiz
   const handlePauseResume = () => {
     setIsPaused(!isPaused);
   };
 
-  // Function to handle the finishing of the quiz and save the results
   const handleFinish = () => {
     setIsFinished(true);
     // Store the result in local storage
@@ -159,7 +151,6 @@ const handleSkip = () => {
     );
   };
 
-  // Function to handle the review of answers
   const handleReview = () => {
     setIsFinished(true);
   };
@@ -183,18 +174,23 @@ const handleSkip = () => {
     <ChakraProvider>
       <VStack spacing={8} align="center" p={8}>
         {!isStarted ? (
-          <Button onClick={() => setIsStarted(true)}
-            colorScheme="green">Start Quiz</Button>
+          <Button onClick={() => setIsStarted(true)} colorScheme="green">
+            Start Quiz
+          </Button>
         ) : (
           <>
+            {/* Progress Bar */}
             <Progress
               colorScheme="green"
               size="md"
               value={((numAnswered + 1) / questions.length) * 100}
-              isAnimated="True"
+              isAnimated={true}
               borderRadius="5"
               width="75%"
-              hasStripe />
+              hasStripe
+            />
+
+            {/* Timer */}
             <SlideFade in={true} offsetY="20px">
               <Timer
                 key={timerKey}
@@ -203,11 +199,16 @@ const handleSkip = () => {
                 onFinish={handleFinish}
               />
             </SlideFade>
-            <Button onClick={handlePauseResume}
+
+            {/* Pause/Resume Button */}
+            <Button
+              onClick={handlePauseResume}
               colorScheme={isPaused ? "green" : "red"}
             >
               {isPaused ? "Resume" : "Pause"}
             </Button>
+
+            {/* Current Question */}
             {currentQuestion && (
               <SlideFade in={true} offsetY="20px">
                 <Question
@@ -220,52 +221,48 @@ const handleSkip = () => {
               </SlideFade>
             )}
 
-
+            {/* Buttons */}
             <Box
-              display='flex'
-              alignItems='center'
-              justifyContent='center'
-              width='100%'
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              width="100%"
               py={12}
               mb={2}
             >
               <Wrap gap="4">
-                {isFinished &&
-                  <WrapItem>
-                    <Button onClick={handleRetake}
-                      colorScheme="green">Retake Quiz
-                    </Button>
-                  </WrapItem>
-                }
                 {isFinished && (
                   <WrapItem>
-
-                    <Button onClick={handleClearPreviousResults}
-                      colorScheme="red">
+                    <Button onClick={handleRetake} colorScheme="green">
+                      Retake Quiz
+                    </Button>
+                  </WrapItem>
+                )}
+                {isFinished && (
+                  <WrapItem>
+                    <Button onClick={handleClearPreviousResults} colorScheme="red">
                       Clear Previous Results
                     </Button>
                   </WrapItem>
                 )}
                 {isFinished && (
                   <WrapItem>
-
-                    <Button onClick={handleReview}
-                      colorScheme="blue"
-                    >Review Answers</Button>
+                    <Button onClick={handleReview} colorScheme="blue">
+                      Review Answers
+                    </Button>
                   </WrapItem>
                 )}
                 {isFinished && (
                   <WrapItem>
-
-                    <Button onClick={handleViewPreviousResults}
-                      colorScheme="green">
+                    <Button onClick={handleViewPreviousResults} colorScheme="green">
                       View Previous Results
                     </Button>
                   </WrapItem>
                 )}
-
               </Wrap>
             </Box>
+
+            {/* Result */}
             {isFinished && (
               <Result
                 score={score}
@@ -273,8 +270,6 @@ const handleSkip = () => {
                 userAnswers={selectedOptions}
               />
             )}
-
-
           </>
         )}
       </VStack>
