@@ -88,10 +88,10 @@ const Question = ({
       )}
       <HStack>
         <Button onClick={onSubmit}
-          colorScheme="blue"
+          colorScheme="green"
         >Submit</Button>
         <Button onClick={onSkip}
-          colorScheme="orange">Skip</Button>
+          colorScheme="teal">Skip</Button>
       </HStack>
     </VStack>
   );

@@ -130,14 +130,17 @@ const Quiz = () => {
   };
 
 
-  // Function to handle the skipping of a question
-  const handleSkip = () => {
-    // Move the current question to the end of the questions array
-    setQuestions([
-      ...questions.filter((question) => question !== currentQuestion),
-      currentQuestion,
-    ]);
-  };
+// Function to handle the skipping of a question
+const handleSkip = () => {
+  // Move the current question to the end of the questions array
+  const remainingQuestions = questions.filter((question) => question !== currentQuestion);
+  const newQuestions = [...remainingQuestions, currentQuestion];
+  setQuestions(newQuestions);
+
+  // Move to the next question
+  setCurrentQuestion(newQuestions[0]);
+};
+
 
   // Function to handle the pausing and resuming of the quiz
   const handlePauseResume = () => {
