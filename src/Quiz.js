@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
-  ButtonGroup,
   Progress,
   useToast,
   VStack,
@@ -28,6 +27,8 @@ const Quiz = () => {
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [numAnswered, setNumAnswered] = useState(0);
+
 
   const handleRetake = () => {
     // Reset the state
@@ -38,7 +39,8 @@ const Quiz = () => {
     setIsFinished(false);
     setIsPaused(false);
     setTimeLeft(1 * 60);
-    
+    setCurrentQuestionIndex(0);
+    setNumAnswered(0);
     setTimerKey((prevKey) => prevKey + 1); // Increment the key
 
     // Use the questions data directly
@@ -86,6 +88,18 @@ const Quiz = () => {
 
   // Function to handle the submission of an answer
   const handleSubmit = () => {
+    // User tries to submit an answer without selecting an option
+    if (selectedOptions.length === 0) {
+      toast({
+        title: "No option selected.",
+        description: "Please select an option before submitting.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
     let questionScore = 0;
     if (currentQuestion["multi-answer"]) {
       const correctAnswers = currentQuestion.answer;
@@ -109,20 +123,12 @@ const Quiz = () => {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       setIsFinished(true);  // If there are no more questions, finish the quiz
-    };
-
-    // User tries to submit an answer without selecting an option
-    if (selectedOptions.length === 0) {
-      toast({
-        title: "No option selected.",
-        description: "Please select an option before submitting.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-      return;
     }
+
+    // Increase the number of answered questions
+    setNumAnswered(numAnswered + 1);
   };
+
 
   // Function to handle the skipping of a question
   const handleSkip = () => {
@@ -181,8 +187,8 @@ const Quiz = () => {
             <Progress
               colorScheme="green"
               size="md"
-              value={((currentQuestionIndex + 1) / questions.length) * 100}
-              isAnimated="False"
+              value={((numAnswered + 1) / questions.length) * 100}
+              isAnimated="True"
               borderRadius="5"
               width="75%"
               hasStripe />
@@ -224,7 +230,7 @@ const Quiz = () => {
                 {isFinished &&
                   <WrapItem>
                     <Button onClick={handleRetake}
-                    colorScheme="green">Retake Quiz
+                      colorScheme="green">Retake Quiz
                     </Button>
                   </WrapItem>
                 }
@@ -249,7 +255,7 @@ const Quiz = () => {
                   <WrapItem>
 
                     <Button onClick={handleViewPreviousResults}
-                    colorScheme="green">
+                      colorScheme="green">
                       View Previous Results
                     </Button>
                   </WrapItem>
