@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {
+  Box,
   Button,
+  ButtonGroup,
+  Progress,
   useToast,
   VStack,
   SlideFade,
   ChakraProvider,
+  Wrap,
+  WrapItem
 } from "@chakra-ui/react";
 import Question from "./Question";
-import ProgressBar from "./ProgressBar";
 import Timer from "./Timer";
 import Result from "./Result";
 import questionsData from "./quest.json";
@@ -23,6 +27,7 @@ const Quiz = () => {
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const handleRetake = () => {
     // Reset the state
@@ -33,6 +38,7 @@ const Quiz = () => {
     setIsFinished(false);
     setIsPaused(false);
     setTimeLeft(1 * 60);
+    
     setTimerKey((prevKey) => prevKey + 1); // Increment the key
 
     // Use the questions data directly
@@ -97,13 +103,13 @@ const Quiz = () => {
     setScore(score + questionScore);
 
     // Move to the next question
-    const currentIndex = questions.indexOf(currentQuestion);
-    if (currentIndex < questions.length - 1) {
-      setCurrentQuestion(questions[currentIndex + 1]);
+    const nextQuestionIndex = currentQuestionIndex + 1;
+    if (nextQuestionIndex < questions.length) {
+      setCurrentQuestion(questions[nextQuestionIndex]);
+      setCurrentQuestionIndex(nextQuestionIndex);
     } else {
-      setIsFinished(true); // If there are no more questions, finish the quiz
-      handleFinish(); // Save the results when the quiz is finished
-    }
+      setIsFinished(true);  // If there are no more questions, finish the quiz
+    };
 
     // User tries to submit an answer without selecting an option
     if (selectedOptions.length === 0) {
@@ -168,27 +174,29 @@ const Quiz = () => {
     <ChakraProvider>
       <VStack spacing={8} align="center" p={8}>
         {!isStarted ? (
-          <Button onClick={() => setIsStarted(true)}>Start Quiz</Button>
+          <Button onClick={() => setIsStarted(true)}
+            colorScheme="green">Start Quiz</Button>
         ) : (
           <>
-            <SlideFade in={true} offsetY="20px">
-              <ProgressBar
-                progress={
-                  ((questions.indexOf(currentQuestion) + 1) /
-                    questions.length) *
-                  100
-                }
-              />
-            </SlideFade>
+            <Progress
+              colorScheme="green"
+              size="md"
+              value={((currentQuestionIndex + 1) / questions.length) * 100}
+              isAnimated="False"
+              borderRadius="5"
+              width="75%"
+              hasStripe />
             <SlideFade in={true} offsetY="20px">
               <Timer
-                key={timerKey} // Use the key here
+                key={timerKey}
                 timeLeft={timeLeft}
                 isPaused={isPaused}
                 onFinish={handleFinish}
               />
             </SlideFade>
-            <Button onClick={handlePauseResume}>
+            <Button onClick={handlePauseResume}
+              colorScheme={isPaused ? "green" : "red"}
+            >
               {isPaused ? "Resume" : "Pause"}
             </Button>
             {currentQuestion && (
@@ -202,20 +210,53 @@ const Quiz = () => {
                 />
               </SlideFade>
             )}
-            {isFinished && <Button onClick={handleRetake}>Retake Quiz</Button>}
-            {isFinished && (
-              <Button onClick={handleClearPreviousResults}>
-                Clear Previous Results
-              </Button>
-            )}
-            {isFinished && (
-              <Button onClick={handleReview}>Review Answers</Button>
-            )}
-            {isFinished && (
-              <Button onClick={handleViewPreviousResults}>
-                View Previous Results
-              </Button>
-            )}
+
+
+            <Box
+              display='flex'
+              alignItems='center'
+              justifyContent='center'
+              width='100%'
+              py={12}
+              mb={2}
+            >
+              <Wrap gap="4">
+                {isFinished &&
+                  <WrapItem>
+                    <Button onClick={handleRetake}
+                    colorScheme="green">Retake Quiz
+                    </Button>
+                  </WrapItem>
+                }
+                {isFinished && (
+                  <WrapItem>
+
+                    <Button onClick={handleClearPreviousResults}
+                      colorScheme="red">
+                      Clear Previous Results
+                    </Button>
+                  </WrapItem>
+                )}
+                {isFinished && (
+                  <WrapItem>
+
+                    <Button onClick={handleReview}
+                      colorScheme="blue"
+                    >Review Answers</Button>
+                  </WrapItem>
+                )}
+                {isFinished && (
+                  <WrapItem>
+
+                    <Button onClick={handleViewPreviousResults}
+                    colorScheme="green">
+                      View Previous Results
+                    </Button>
+                  </WrapItem>
+                )}
+
+              </Wrap>
+            </Box>
             {isFinished && (
               <Result
                 score={score}
@@ -223,6 +264,8 @@ const Quiz = () => {
                 userAnswers={selectedOptions}
               />
             )}
+
+
           </>
         )}
       </VStack>

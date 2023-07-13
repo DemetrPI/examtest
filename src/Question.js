@@ -87,8 +87,11 @@ const Question = ({
         </RadioGroup>
       )}
       <HStack>
-        <Button onClick={onSubmit}>Submit</Button>
-        <Button onClick={onSkip}>Skip</Button>
+        <Button onClick={onSubmit}
+          colorScheme="blue"
+        >Submit</Button>
+        <Button onClick={onSkip}
+          colorScheme="orange">Skip</Button>
       </HStack>
     </VStack>
   );
