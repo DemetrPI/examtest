@@ -18,7 +18,7 @@ const Question = ({
   onSubmit,
   isPaused,
   onSkip,
-  isFinished
+  isFinished,
 }) => {
   const [options, setOptions] = useState([]);
 
@@ -64,7 +64,7 @@ const Question = ({
   };
 
   // Split the question into lines
-  const lines = question.question.split('✑');
+  const lines = question.question.split("✑");
 
   return (
     <VStack spacing={4} align="stretch">
@@ -99,15 +99,20 @@ const Question = ({
         </RadioGroup>
       )}
       <HStack>
-        <Button onClick={onSubmit}
+        <Button
+          onClick={onSubmit}
           colorScheme="green"
           isDisabled={isPaused || isFinished}
         >
-          Submit</Button>
-        <Button onClick={onSkip}
+          Submit
+        </Button>
+        <Button
+          onClick={onSkip}
           colorScheme="teal"
           isDisabled={isPaused || isFinished}
-          >Skip</Button>
+        >
+          Skip
+        </Button>
       </HStack>
     </VStack>
   );

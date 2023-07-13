@@ -13,6 +13,7 @@ import {
 import Question from "./Question";
 import Timer from "./Timer";
 import Result from "./Result";
+import ResultModal from "./ResultModal";
 import questionsData from "./quest.json";
 
 const Quiz = () => {
@@ -30,10 +31,12 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [numAnswered, setNumAnswered] = useState(0);
   const [isReview, setIsReview] = useState(false);
-
+  const [isQuizOver, setIsQuizOver] = useState(false);
+  const totalPoints = questions.length * 10;
 
   const handleRetake = () => {
     // Reset the state
+    const shuffledQuestions = shuffleArray(questionsData.quiz);
     setQuestions([]);
     setCurrentQuestion(null);
     setSelectedOptions([]);
@@ -44,13 +47,11 @@ const Quiz = () => {
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(0);
-    setTimerKey((prevKey) => prevKey + 1); // Increment the key
-    // Use the questions data directly
-    const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 5));
+    setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
+    setIsQuizOver (false);
+    setQuestions(shuffledQuestions.slice(0, 5));
   };
-
 
   useEffect(() => {
     // Use the questions data directly
@@ -58,7 +59,6 @@ const Quiz = () => {
     setQuestions(shuffledQuestions.slice(0, 5));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
-
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
@@ -71,7 +71,6 @@ const Quiz = () => {
     };
   }, []);
 
-
   // Function to shuffle an array
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -80,7 +79,6 @@ const Quiz = () => {
     }
     return array;
   };
-
 
   // Clear previous quiz results
   const handleClearPreviousResults = () => {
@@ -92,7 +90,6 @@ const Quiz = () => {
       isClosable: true,
     });
   };
-
 
   // User tries to submit an answer without selecting an option check
   const handleSubmit = () => {
@@ -127,10 +124,10 @@ const Quiz = () => {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       setIsFinished(true);
+      setIsQuizOver(true);
     }
     setNumAnswered(numAnswered + 1);
   };
-
 
   // Move the current question to the end of the questions array
   const handleSkip = () => {
@@ -142,16 +139,15 @@ const Quiz = () => {
     setCurrentQuestion(newQuestions[0]);
   };
 
-
   // timer pause function
   const handlePauseResume = () => {
     setIsPaused(!isPaused);
   };
 
-
   // finish test function
   const handleFinish = () => {
     setIsFinished(true);
+    setIsQuizOver(true);
     // Store the result in local storage
     const result = { score, date: new Date().toISOString() };
     const previousResults = JSON.parse(localStorage.getItem("results")) || [];
@@ -161,14 +157,12 @@ const Quiz = () => {
     );
   };
 
-
   //Show quiz answers function
   const handleReview = () => {
-    setIsReview(prevIsReview => !prevIsReview);
+    setIsReview((prevIsReview) => !prevIsReview);
   };
 
-
-  // Show previous quiz score 
+  // Show previous quiz score
   const handleViewPreviousResults = () => {
     const previousResults = JSON.parse(localStorage.getItem("results")) || [];
     previousResults.forEach((result, index) => {
@@ -202,7 +196,7 @@ const Quiz = () => {
               isAnimated={true}
               borderRadius="5"
               width="75%"
-              />
+            />
 
             {/* Timer */}
             <SlideFade in={true} offsetY="20px">
@@ -211,7 +205,7 @@ const Quiz = () => {
                 timeLeft={timeLeft}
                 isPaused={isPaused}
                 onFinish={handleFinish}
-              />
+                        />
             </SlideFade>
 
             {/* Pause/Resume Button */}
@@ -231,12 +225,17 @@ const Quiz = () => {
                   onOptionSelect={setSelectedOptions}
                   onSubmit={handleSubmit}
                   onSkip={handleSkip}
-                  isPaused= {isPaused}
-                  isFinished={isFinished}
+                  isPaused={isPaused}
+                  isFinished={isQuizOver}
                 />
               </SlideFade>
             )}
-
+            <ResultModal
+              isOpen={isFinished}
+              onClose={() => setIsFinished(false)}
+              score={score}
+              totalPoints={totalPoints}
+            />
             {/* Buttons */}
             <Box
               display="flex"
@@ -247,33 +246,39 @@ const Quiz = () => {
               mb={2}
             >
               <Wrap gap={newLocal}>
-                {isFinished && (
+                {(isFinished || isQuizOver)  && (
                   <WrapItem>
                     <Button onClick={handleRetake} colorScheme="green">
                       Retake Quiz
                     </Button>
                   </WrapItem>
                 )}
-                {isFinished && (
+                {(isFinished || isQuizOver)  &&(
                   <WrapItem>
                     <Button
                       onClick={handleReview}
-                      colorScheme={isReview ? "blue" : "green"}>
+                      colorScheme={isReview ? "blue" : "green"}
+                    >
                       {isReview ? "Hide Results" : "Review Answers"}
                     </Button>
-
                   </WrapItem>
                 )}
-                {isFinished && (
+                {(isFinished || isQuizOver)  &&(
                   <WrapItem>
-                    <Button onClick={handleViewPreviousResults} colorScheme="green">
+                    <Button
+                      onClick={handleViewPreviousResults}
+                      colorScheme="green"
+                    >
                       View Previous Quiz Scores
                     </Button>
                   </WrapItem>
                 )}
-                {isFinished && (
+                {(isFinished || isQuizOver)  &&(
                   <WrapItem>
-                    <Button onClick={handleClearPreviousResults} colorScheme="gray">
+                    <Button
+                      onClick={handleClearPreviousResults}
+                      colorScheme="gray"
+                    >
                       Clear Previous Score
                     </Button>
                   </WrapItem>
