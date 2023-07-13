@@ -201,8 +201,7 @@ const Quiz = () => {
               isAnimated={true}
               borderRadius="5"
               width="75%"
-              hasStripe
-            />
+              />
 
             {/* Timer */}
             <SlideFade in={true} offsetY="20px">

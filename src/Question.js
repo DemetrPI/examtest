@@ -58,9 +58,14 @@ const Question = ({
     onOptionSelect(newSelectedOptions);
   };
 
+  // Split the question into lines
+  const lines = question.question.split('✑');
+
   return (
     <VStack spacing={4} align="stretch">
-      <Text>{question.question}</Text>
+      {lines.map((line, index) => (
+        <Text key={index}>{line}</Text>
+      ))}
       {question["multi-answer"] === "True" ? (
         <CheckboxGroup value={selectedOptions}>
           {options.map((option) => (
@@ -97,7 +102,7 @@ const Question = ({
         <Button onClick={onSkip}
           colorScheme="teal"
           isDisabled={isPaused || isFinished}
-          >Skip</Button>
+        >Skip</Button>
       </HStack>
     </VStack>
   );

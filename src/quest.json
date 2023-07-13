@@ -3,7 +3,7 @@
     {
       "id": "q1",
       "multi-answer": "False",
-      "question": "Your company has datacenters in Los Angeles and New York. The company has a Microsoft Azure subscription. You are configuring the two datacenters as geo-clustered sites for site resiliency. You need to recommend an Azure storage redundancy option. You have the following data storage requirements:\\n ✑ Data must be stored on multiple nodes.\\n ✑ Data must be stored on nodes in separate geographic locations.\\n ✑ Data can be read from the secondary location as well as from the primary location.\\n Which of the following Azure stored redundancy options should you recommend?",
+      "question": "Your company has datacenters in Los Angeles and New York. The company has a Microsoft Azure subscription. You are configuring the two datacenters as geo-clustered sites for site resiliency. You need to recommend an Azure storage redundancy option. You have the following data storage requirements: ✑ Data must be stored on multiple nodes. ✑ Data must be stored on nodes in separate geographic locations. ✑ Data can be read from the secondary location as well as from the primary location. Which of the following Azure stored redundancy options should you recommend?",
       "options": [
         "A. Geo-redundant storage",
         "B. Read-only geo-redundant storage",
