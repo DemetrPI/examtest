@@ -21,10 +21,11 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 10);
+  const [timeLeft, setTimeLeft] = useState(1 * 30);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -40,16 +41,17 @@ const Quiz = () => {
     setQuestions([]);
     setCurrentQuestion(null);
     setSelectedOptions([]);
-    setScore(0);
+    setScore(null);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(1 * 10);
+    setTimeLeft(1 * 30);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
-    setIsReview(0);
+    setIsReview(null);
+    setUserAnswers([]);
     setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
-    setIsQuizOver (false);
+    setIsQuizOver(false);
     setQuestions(shuffledQuestions.slice(0, 5));
   };
 
@@ -127,6 +129,12 @@ const Quiz = () => {
       setIsQuizOver(true);
     }
     setNumAnswered(numAnswered + 1);
+    // Add the user's answer to the userAnswers array
+    const answer = {
+      question: currentQuestion.question,
+      userAnswer: selectedOptions // Store all selected options
+    };
+    setUserAnswers([...userAnswers, answer]);
   };
 
   // Move the current question to the end of the questions array
@@ -200,7 +208,7 @@ const Quiz = () => {
 
             {/* Timer */}
             <SlideFade in={true} offsetY="20px">
-            <Timer
+              <Timer
                 key={timerKey}
                 timeLeft={timeLeft}
                 isPaused={isPaused}
@@ -250,14 +258,14 @@ const Quiz = () => {
               mb={2}
             >
               <Wrap gap={newLocal}>
-                {(isFinished || isQuizOver)  && (
+                {(isFinished || isQuizOver) && (
                   <WrapItem>
                     <Button onClick={handleRetake} colorScheme="green">
                       Retake Quiz
                     </Button>
                   </WrapItem>
                 )}
-                {(isFinished || isQuizOver)  &&(
+                {(isFinished || isQuizOver) && (
                   <WrapItem>
                     <Button
                       onClick={handleReview}
@@ -267,7 +275,7 @@ const Quiz = () => {
                     </Button>
                   </WrapItem>
                 )}
-                {(isFinished || isQuizOver)  &&(
+                {(isFinished || isQuizOver) && (
                   <WrapItem>
                     <Button
                       onClick={handleViewPreviousResults}
@@ -277,7 +285,7 @@ const Quiz = () => {
                     </Button>
                   </WrapItem>
                 )}
-                {(isFinished || isQuizOver)  &&(
+                {(isFinished || isQuizOver) && (
                   <WrapItem>
                     <Button
                       onClick={handleClearPreviousResults}
@@ -295,7 +303,7 @@ const Quiz = () => {
               <Result
                 score={score}
                 questions={questions}
-                userAnswers={selectedOptions}
+                userAnswers={userAnswers}
               />
             )}
           </>
