@@ -25,7 +25,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 30);
+  const [timeLeft, setTimeLeft] = useState(1 * 20);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -44,7 +44,7 @@ const Quiz = () => {
     setScore(null);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(1 * 30);
+    setTimeLeft(1 * 20);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(null);
@@ -52,13 +52,13 @@ const Quiz = () => {
     setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
-    setQuestions(shuffledQuestions.slice(0, 5));
+    setQuestions(shuffledQuestions.slice(0, 1));
   };
 
   useEffect(() => {
     // Use the questions data directly
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 5));
+    setQuestions(shuffledQuestions.slice(0, 1));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 
@@ -83,7 +83,7 @@ const Quiz = () => {
   };
 
   // Clear previous quiz results
-  const handleClearPreviousResults = () => {
+  const handleClearPreviousResults = () => { 
     localStorage.removeItem("results");
     toast({
       title: "Previous results cleared.",
@@ -120,6 +120,8 @@ const Quiz = () => {
       }
     }
     setScore(score + questionScore);
+
+    
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestion(questions[nextQuestionIndex]);

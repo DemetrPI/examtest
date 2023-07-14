@@ -39,7 +39,7 @@ const Question = ({
 
   const handleOptionSelect = (optionValue) => {
     let newOptions;
-    if (question["multi-answer"] === "True") {
+    if (question["multi-answer"]) {
       // If it's a multiple-answer question, toggle the selected state of the option
       newOptions = options.map((option) =>
         option.value === optionValue
@@ -71,7 +71,7 @@ const Question = ({
       {lines.map((line, index) => (
         <Text key={index}>{line}</Text>
       ))}
-      {question["multi-answer"] === "True" ? (
+      {question["multi-answer"] ? (
         <CheckboxGroup value={selectedOptions}>
           {options.map((option) => (
             <SlideFade in={true} offsetY="20px" key={option.value}>
