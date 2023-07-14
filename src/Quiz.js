@@ -24,7 +24,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 60);
+  const [timeLeft, setTimeLeft] = useState(1 * 10);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -43,7 +43,7 @@ const Quiz = () => {
     setScore(0);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(1 * 60);
+    setTimeLeft(1 * 10);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(0);
@@ -200,12 +200,16 @@ const Quiz = () => {
 
             {/* Timer */}
             <SlideFade in={true} offsetY="20px">
-              <Timer
+            <Timer
                 key={timerKey}
                 timeLeft={timeLeft}
                 isPaused={isPaused}
-                onFinish={handleFinish}
-                        />
+                onFinish={() => {
+                  if (!isQuizOver) {
+                    handleFinish();
+                  }
+                }}
+              />
             </SlideFade>
 
             {/* Pause/Resume Button */}
