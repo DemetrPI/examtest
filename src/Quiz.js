@@ -83,7 +83,7 @@ const Quiz = () => {
   };
 
   // Clear previous quiz results
-  const handleClearPreviousResults = () => { 
+  const handleClearPreviousResults = () => {
     localStorage.removeItem("results");
     toast({
       title: "Previous results cleared.",
@@ -92,7 +92,6 @@ const Quiz = () => {
       isClosable: true,
     });
   };
-
 
   const handleSubmit = () => {
     // User tries to submit an answer without selecting an option check
@@ -106,6 +105,7 @@ const Quiz = () => {
       });
       return;
     }
+
     let questionScore = 0;
     if (currentQuestion["multi-answer"]) {
       const correctAnswers = currentQuestion.answer;
@@ -113,15 +113,16 @@ const Quiz = () => {
         correctAnswers.includes(option)
       );
       questionScore = parseFloat(
-        ((10 / correctAnswers.length) * correctSelected.length).toFixed(2)
+        (((10 / correctAnswers.length) * correctSelected.length)).toFixed(2)
       );
     } else {
       if (selectedOptions[0] === currentQuestion.answer) {
         questionScore = 10;
       }
     }
-    setScore(score + questionScore);
-  
+  setScore(parseFloat((score + questionScore).toFixed(2)));
+
+
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestion(questions[nextQuestionIndex]);
@@ -129,8 +130,8 @@ const Quiz = () => {
     } else {
       handleFinish();
     }
-    setNumAnswered(numAnswered + 1);
     // Add the user's answer to the userAnswers array
+    setNumAnswered(numAnswered + 1);
     const answer = {
       question: currentQuestion.question,
       userAnswer: selectedOptions, // Store all selected options
@@ -138,21 +139,20 @@ const Quiz = () => {
     setUserAnswers([...userAnswers, answer]);
   };
 
-    // finish test function
-    const handleFinish = () => {
-      // Store the result in local storage
-      const result = { score, date: new Date().toISOString() };
-      const previousResults = JSON.parse(localStorage.getItem("results")) || [];
-      localStorage.setItem("results",JSON.stringify([...previousResults, result])
-      );
-      setIsQuizOver(true);
-      console.log(isQuizOver)
-      setIsFinished(true);
-      console.log(isFinished)
-    };
-  
+  // finish test function
+  const handleFinish = () => {
+    // Store the result in local storage
+    const result = { score, date: new Date().toISOString() };
+    const previousResults = JSON.parse(localStorage.getItem("results")) || [];
+    localStorage.setItem(
+      "results",
+      JSON.stringify([...previousResults, result])
+    );
+    setIsQuizOver(true);
+    setIsFinished(true);
+  };
 
-      // Move the current question to the end of the questions array - if user skips the question
+  // Move the current question to the end of the questions array - if user skips the question
   const handleSkip = () => {
     const remainingQuestions = questions.filter(
       (question) => question !== currentQuestion
@@ -162,12 +162,10 @@ const Quiz = () => {
     setCurrentQuestion(newQuestions[0]);
   };
 
-
   // Timer pause function
   const handlePauseResume = () => {
     setIsPaused(!isPaused);
   };
-
 
   //Show quiz answers function
   const handleReview = () => {
@@ -178,13 +176,12 @@ const Quiz = () => {
   const handleViewPreviousResults = () => {
     const previousResults = JSON.parse(localStorage.getItem("results")) || [];
     previousResults.forEach((result, index) => {
+    const percentage = ((result.score / totalPoints) * 100).toFixed(2);  
       toast({
         title: `Result ${index + 1}`,
-        description: `Score: ${result.score}\nDate: ${new Date(
-          result.date
-        ).toLocaleString()}`,
+        description: `Your Score is ${result.score} from ${totalPoints} total points, what is ${percentage}%. Quiz was taken on: ${new Date(result.date).toLocaleString()}`,
         status: "info",
-        duration: 5000,
+        duration: 3000,
         isClosable: true,
       });
     });

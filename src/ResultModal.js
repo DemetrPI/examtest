@@ -6,12 +6,11 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   Text,
 } from "@chakra-ui/react";
 
 const ResultModal = ({ isOpen, onClose, score, totalPoints }) => {
-  const percentage = (score / totalPoints) * 100;
+  const percentage = ((score / totalPoints) * 100).toFixed(2);
 
   let bgColor;
   if (percentage >= 80) {
@@ -49,7 +48,6 @@ const ResultModal = ({ isOpen, onClose, score, totalPoints }) => {
 
         <ModalContent >
           <ModalHeader bg={bgColor} textAlign="center" borderTopRadius = "md">{headerMessage}</ModalHeader>
-          <ModalCloseButton onClick={onClose} />
           <ModalBody>
             <Text textAlign="center">{mainMessage}</Text>
             <Text textAlign="center">{footerMessage}</Text>
