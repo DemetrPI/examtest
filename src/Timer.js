@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text } from "@chakra-ui/react";
 
-const Timer = ({ timeLeft, isPaused, onFinish }) => {
+const Timer = ({ timeLeft, isPaused, onFinish, isQuizOver }) => {
   const [remainingTime, setRemainingTime] = useState(timeLeft);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const Timer = ({ timeLeft, isPaused, onFinish }) => {
   }, [timeLeft]);
 
   useEffect(() => {
-    if (isPaused || remainingTime <= 0) {
+    if (isPaused || remainingTime <= 0 || isQuizOver) {
       return;
     }
 
@@ -18,7 +18,7 @@ const Timer = ({ timeLeft, isPaused, onFinish }) => {
     }, 1000);
 
     return () => clearInterval(timerId);
-  }, [isPaused, remainingTime]);
+  }, [isPaused, remainingTime, isQuizOver]);
 
   useEffect(() => {
     if (remainingTime <= 0) {
@@ -28,6 +28,7 @@ const Timer = ({ timeLeft, isPaused, onFinish }) => {
 
   return <Text fontSize="xl">{formatTime(remainingTime)}</Text>;
 };
+
 
 // Function to format the time in seconds to a MM:SS format
 const formatTime = (time) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Box,
   Button,
@@ -34,6 +34,7 @@ const Quiz = () => {
   const [isReview, setIsReview] = useState(false);
   const [isQuizOver, setIsQuizOver] = useState(false);
   const totalPoints = questions.length * 10;
+  const [attemptedToLeave, setAttemptedToLeave] = useState(false);
 
   // Reset the state
   const handleRetake = () => {
@@ -52,6 +53,7 @@ const Quiz = () => {
     setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
+    setAttemptedToLeave(false);
     setQuestions(shuffledQuestions.slice(0, 3));
   };
 
@@ -62,6 +64,7 @@ const Quiz = () => {
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 
+  // Check on window refresh. 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       event.preventDefault();
@@ -72,6 +75,8 @@ const Quiz = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
+
+
 
   // Function to shuffle an array
   const shuffleArray = (array) => {
@@ -113,15 +118,14 @@ const Quiz = () => {
         correctAnswers.includes(option)
       );
       questionScore = parseFloat(
-        (((10 / correctAnswers.length) * correctSelected.length)).toFixed(2)
+        ((10 / correctAnswers.length) * correctSelected.length).toFixed(2)
       );
     } else {
       if (selectedOptions[0] === currentQuestion.answer) {
         questionScore = 10;
       }
     }
-  setScore(parseFloat((score + questionScore).toFixed(2)));
-
+    setScore(parseFloat((score + questionScore).toFixed(2)));
 
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
@@ -139,8 +143,10 @@ const Quiz = () => {
     setUserAnswers([...userAnswers, answer]);
   };
 
-  // finish test function
-  const handleFinish = () => {
+  //handle finish function
+  const handleFinish = useCallback(() => {
+    setIsFinished(true);
+    setIsQuizOver(true);
     // Store the result in local storage
     const result = { score, date: new Date().toISOString() };
     const previousResults = JSON.parse(localStorage.getItem("results")) || [];
@@ -148,9 +154,33 @@ const Quiz = () => {
       "results",
       JSON.stringify([...previousResults, result])
     );
-    setIsQuizOver(true);
-    setIsFinished(true);
-  };
+  }, [score]); // add any other dependencies of handleFinish here
+  
+
+  useEffect(() => {
+    window.onblur = () => {
+      if (attemptedToLeave) {
+        // End the quiz
+        handleFinish();
+      } else {
+        setAttemptedToLeave(true);
+        toast({
+          position: "top",
+          title: "Do not cheat!",
+          description: "Second attempt to leave quiz window before finishing quiz will cause immediate quiz termination!",
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    };
+    return () => {
+      window.onblur = null;
+    };
+  }, [attemptedToLeave, toast, handleFinish]);
+  
+  
+  
 
   // Move the current question to the end of the questions array - if user skips the question
   const handleSkip = () => {
@@ -176,10 +206,14 @@ const Quiz = () => {
   const handleViewPreviousResults = () => {
     const previousResults = JSON.parse(localStorage.getItem("results")) || [];
     previousResults.forEach((result, index) => {
-    const percentage = ((result.score / totalPoints) * 100).toFixed(2);  
+      const percentage = ((result.score / totalPoints) * 100).toFixed(2);
       toast({
         title: `Result ${index + 1}`,
-        description: `Your Score is ${result.score} from ${totalPoints} total points, what is ${percentage}%. Quiz was taken on: ${new Date(result.date).toLocaleString()}`,
+        description: `Your Score is ${
+          result.score
+        } from ${totalPoints} total points, what is ${percentage}%. Quiz was taken on: ${new Date(
+          result.date
+        ).toLocaleString()}`,
         status: "info",
         duration: 3000,
         isClosable: true,
@@ -193,7 +227,7 @@ const Quiz = () => {
       <VStack spacing={8} align="center" p={8}>
         {!isStarted ? (
           <Button onClick={() => setIsStarted(true)} colorScheme="green">
-            Start Quiz
+            Start Quiz!
           </Button>
         ) : (
           <>
@@ -213,6 +247,7 @@ const Quiz = () => {
                 key={timerKey}
                 timeLeft={timeLeft}
                 isPaused={isPaused}
+                isQuizOver={isQuizOver}
                 onFinish={() => {
                   if (!isQuizOver) {
                     handleFinish();

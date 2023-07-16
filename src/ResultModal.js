@@ -6,11 +6,12 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
+  ModalCloseButton,
   Text,
 } from "@chakra-ui/react";
 
 const ResultModal = ({ isOpen, onClose, score, totalPoints }) => {
-  const percentage = ((score / totalPoints) * 100).toFixed(2);
+  const percentage = (score ? ((score / totalPoints) * 100) : 0).toFixed(2);
 
   let bgColor;
   if (percentage >= 80) {
@@ -32,7 +33,7 @@ const ResultModal = ({ isOpen, onClose, score, totalPoints }) => {
     footerMessage = "Recommend you to pass the quiz again.";
   } else {
     headerMessage = "You did not pass the quiz!";
-    mainMessage = `Your score is ${percentage}%,  you have received ${score} of ${totalPoints} total points!`;
+    mainMessage = `Your score is ${percentage}%, you have received ${score ? score : 0} of ${totalPoints} total points!`;
     footerMessage = "Suggest you to learn a bit more.";
   }
 
@@ -48,6 +49,7 @@ const ResultModal = ({ isOpen, onClose, score, totalPoints }) => {
 
         <ModalContent >
           <ModalHeader bg={bgColor} textAlign="center" borderTopRadius = "md">{headerMessage}</ModalHeader>
+          <ModalCloseButton onClick={onClose} />
           <ModalBody>
             <Text textAlign="center">{mainMessage}</Text>
             <Text textAlign="center">{footerMessage}</Text>
