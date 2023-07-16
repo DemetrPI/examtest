@@ -16,14 +16,14 @@ const Question = ({
   selectedOptions,
   onOptionSelect,
   onSubmit,
-  isPaused,
   onSkip,
+  isPaused,
   isFinished,
 }) => {
   const [options, setOptions] = useState([]);
 
+  // Convert the options to an array of objects with a selected property
   useEffect(() => {
-    // Convert the options to an array of objects with a selected property
     setOptions(
       question.options.map((option) => ({
         value: option,
@@ -37,26 +37,25 @@ const Question = ({
     onOptionSelect([]);
   }, [question, onOptionSelect]);
 
+  // If it's a multiple-answer question, toggle the selected state of the option
   const handleOptionSelect = (optionValue) => {
     let newOptions;
     if (question["multi-answer"]) {
-      // If it's a multiple-answer question, toggle the selected state of the option
       newOptions = options.map((option) =>
         option.value === optionValue
           ? { ...option, selected: !option.selected }
           : option
       );
-    } else {
       // If it's a single-answer question, deselect all other options
+    } else {
       newOptions = options.map((option) => ({
         ...option,
         selected: option.value === optionValue,
       }));
     }
 
-    setOptions(newOptions);
-
     // Update the selectedOptions state in the Quiz component
+    setOptions(newOptions);
     const newSelectedOptions = newOptions
       .filter((option) => option.selected)
       .map((option) => option.value);
@@ -78,6 +77,7 @@ const Question = ({
               <Checkbox
                 isChecked={option.selected}
                 onChange={() => handleOptionSelect(option.value)}
+                isDisabled={isPaused || isFinished}
               >
                 {option.value}
               </Checkbox>
@@ -91,6 +91,7 @@ const Question = ({
               <Radio
                 isChecked={option.selected}
                 onChange={() => handleOptionSelect(option.value)}
+                isDisabled={isPaused || isFinished}
               >
                 {option.value}
               </Radio>

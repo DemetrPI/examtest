@@ -35,8 +35,8 @@ const Quiz = () => {
   const [isQuizOver, setIsQuizOver] = useState(false);
   const totalPoints = questions.length * 10;
 
+  // Reset the state
   const handleRetake = () => {
-    // Reset the state
     const shuffledQuestions = shuffleArray(questionsData.quiz);
     setQuestions([]);
     setCurrentQuestion(null);
@@ -55,8 +55,8 @@ const Quiz = () => {
     setQuestions(shuffledQuestions.slice(0, 3));
   };
 
+  // Use the questions data directly
   useEffect(() => {
-    // Use the questions data directly
     const shuffledQuestions = shuffleArray(questionsData.quiz);
     setQuestions(shuffledQuestions.slice(0, 3));
     setCurrentQuestion(shuffledQuestions[0]);
@@ -93,6 +93,7 @@ const Quiz = () => {
     });
   };
 
+
   const handleSubmit = () => {
     // User tries to submit an answer without selecting an option check
     if (selectedOptions.length === 0) {
@@ -127,11 +128,6 @@ const Quiz = () => {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       handleFinish();
-  
-      // Store the result in local storage
-      const result = { score: score + questionScore, date: new Date().toISOString() };
-      const previousResults = JSON.parse(localStorage.getItem("results")) || [];
-      localStorage.setItem("results", JSON.stringify([...previousResults, result]));
     }
     setNumAnswered(numAnswered + 1);
     // Add the user's answer to the userAnswers array
@@ -141,8 +137,22 @@ const Quiz = () => {
     };
     setUserAnswers([...userAnswers, answer]);
   };
+
+    // finish test function
+    const handleFinish = () => {
+      // Store the result in local storage
+      const result = { score, date: new Date().toISOString() };
+      const previousResults = JSON.parse(localStorage.getItem("results")) || [];
+      localStorage.setItem("results",JSON.stringify([...previousResults, result])
+      );
+      setIsQuizOver(true);
+      console.log(isQuizOver)
+      setIsFinished(true);
+      console.log(isFinished)
+    };
   
-  // Move the current question to the end of the questions array
+
+      // Move the current question to the end of the questions array - if user skips the question
   const handleSkip = () => {
     const remainingQuestions = questions.filter(
       (question) => question !== currentQuestion
@@ -152,24 +162,12 @@ const Quiz = () => {
     setCurrentQuestion(newQuestions[0]);
   };
 
-  // timer pause function
+
+  // Timer pause function
   const handlePauseResume = () => {
     setIsPaused(!isPaused);
   };
 
-
-  // finish test function
-  const handleFinish = () => {
-    setIsFinished(true);
-    setIsQuizOver(true);
-    // Store the result in local storage
-    const result = { score, date: new Date().toISOString() };
-    const previousResults = JSON.parse(localStorage.getItem("results")) || [];
-    localStorage.setItem(
-      "results",
-      JSON.stringify([...previousResults, result])
-    );
-  };
 
   //Show quiz answers function
   const handleReview = () => {
@@ -244,7 +242,7 @@ const Quiz = () => {
                   onSubmit={handleSubmit}
                   onSkip={handleSkip}
                   isPaused={isPaused}
-                  onFinish={isFinished}
+                  isFinished={isQuizOver}
                 />
               </SlideFade>
             )}
