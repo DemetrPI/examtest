@@ -63,10 +63,14 @@ const Question = ({
   };
 
   // Split the question into lines
-  const lines = question.question.split("✑");
+  const lines = question && question.question ? question.question.split("✑") : [];
+
+ 
 
   return (
     <VStack spacing={4} align="stretch">
+      <Text>{question["id"]}</Text>
+      
       {lines.map((line, index) => (
         <Text key={index}>{line}</Text>
       ))}

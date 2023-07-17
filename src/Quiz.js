@@ -25,7 +25,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 10);
+  const [timeLeft, setTimeLeft] = useState(1 * 60);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -34,7 +34,7 @@ const Quiz = () => {
   const [isReview, setIsReview] = useState(false);
   const [isQuizOver, setIsQuizOver] = useState(false);
   const totalPoints = questions.length * 10;
-  const [attemptedToLeave, setAttemptedToLeave] = useState(false);
+  // const [attemptedToLeave, setAttemptedToLeave] = useState(false);
 
   // Reset the state
   const handleRetake = () => {
@@ -45,7 +45,7 @@ const Quiz = () => {
     setScore(null);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(1 * 10);
+    setTimeLeft(1 * 60);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(null);
@@ -53,14 +53,14 @@ const Quiz = () => {
     setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
-    setAttemptedToLeave(false);
-    setQuestions(shuffledQuestions.slice(0, 3));
+    // setAttemptedToLeave(false);
+    setQuestions(shuffledQuestions.slice(0, 5));
   };
 
   // Use the questions data directly
   useEffect(() => {
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 3));
+    setQuestions(shuffledQuestions.slice(0, 5));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 
@@ -110,7 +110,7 @@ const Quiz = () => {
       });
       return;
     }
-
+  
     let questionScore = 0;
     if (currentQuestion["multi-answer"]) {
       const correctAnswers = currentQuestion.answer;
@@ -125,8 +125,10 @@ const Quiz = () => {
         questionScore = 10;
       }
     }
-    setScore(parseFloat((score + questionScore).toFixed(2)));
-
+  
+    // Use function form of setScore
+    setScore((currentScore) => parseFloat((currentScore + questionScore).toFixed(2)));
+  
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestion(questions[nextQuestionIndex]);
@@ -134,6 +136,7 @@ const Quiz = () => {
     } else {
       handleFinish();
     }
+  
     // Add the user's answer to the userAnswers array
     setNumAnswered(numAnswered + 1);
     const answer = {
@@ -142,7 +145,8 @@ const Quiz = () => {
     };
     setUserAnswers([...userAnswers, answer]);
   };
-
+  
+  
   //handle finish function
   const handleFinish = useCallback(() => {
     setIsFinished(true);
@@ -156,28 +160,29 @@ const Quiz = () => {
     );
   }, [score]); // add any other dependencies of handleFinish here
   
+  
 
-  useEffect(() => {
-    window.onblur = () => {
-      if (attemptedToLeave) {
-        // End the quiz
-        handleFinish();
-      } else {
-        setAttemptedToLeave(true);
-        toast({
-          position: "top",
-          title: "Do not cheat!",
-          description: "Second attempt to leave quiz window before finishing quiz will cause immediate quiz termination!",
-          status: "warning",
-          duration: 5000,
-          isClosable: true,
-        });
-      }
-    };
-    return () => {
-      window.onblur = null;
-    };
-  }, [attemptedToLeave, toast, handleFinish]);
+  // useEffect(() => {
+  //   window.onblur = () => {
+  //     if (attemptedToLeave) {
+  //       // End the quiz
+  //       handleFinish();
+  //     } else {
+  //       setAttemptedToLeave(true);
+  //       toast({
+  //         position: "top",
+  //         title: "Do not cheat!",
+  //         description: "Second attempt to leave quiz window before finishing quiz will cause immediate quiz termination!",
+  //         status: "warning",
+  //         duration: 5000,
+  //         isClosable: true,
+  //       });
+  //     }
+  //   };
+  //   return () => {
+  //     window.onblur = null;
+  //   };
+  // }, [attemptedToLeave, toast, handleFinish]);
   
   
   
