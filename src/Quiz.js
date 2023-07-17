@@ -188,6 +188,7 @@ const Quiz = () => {
   
 
   // Move the current question to the end of the questions array - if user skips the question
+  // TODO: repair the skip function, as for now it is possible to answer a question several times on skip
   const handleSkip = () => {
     const remainingQuestions = questions.filter(
       (question) => question !== currentQuestion
