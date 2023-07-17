@@ -1,10 +1,9 @@
 {
   "quiz": [
-   
     {
-      "id": "q2",
+      "id":"question1",
       "multi-answer": true,
-      "question": "Your company intends to subscribe to an Azure support plan. The support plan must allow for new support requests to be opened. Which of the following are support plans that will allow this? Answer by dragging the correct option from the list to the answer area.",
+      "question": "Your company intends to subscribe to an Azure support plan. The support plan must allow for new support requests to be opened. Which of the following are support plans that will allow this?",
       "options": [
         "Basic",
         "Developer",
@@ -20,7 +19,23 @@
       ]
     },
     {
-      "id": "q3",
+      "id":"question2",
+      "multi-answer": false,
+      "question": "Your company has datacenters in Los Angeles and New York. The company has a Microsoft Azure subscription.       You are configuring the two datacenters as geo-clustered sites for site resiliency.       You need to recommend an Azure storage redundancy option.      You have the following data storage requirements:      ✑ Data must be stored on multiple nodes.      ✑ Data must be stored on nodes in separate geographic locations.      ✑ Data can be read from the secondary location as well as from the primary location       Which of the following Azure stored redundancy options should you recommend?",
+      "options": [
+        "A. Geo-redundant storage",
+        "B. Read-only geo-redundant storage",
+        "C. Zone-redundant storage",
+        "D. Locally redundant storage"
+      ],
+      "answer": [
+        "B. Read-only geo-redundant storage"
+      ],
+      "reference": "https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage",
+      "remark": "RA-GRS allows you to have higher read availability for your storage account by providing ג€read onlyג€ access to the data replicated to the secondary location. Once you enable this feature, the secondary location may be used to achieve higher availability in the event the data is not available in the primary region. This is an optional feature which requires the storage account be geo-replicated."
+    },
+    {
+      "id":"question3",
       "multi-answer": false,
       "question": "Your company's Azure subscription includes a Basic support plan. They would like to request an assessment of an Azure environment's design from Microsoft. This is, however, not supported by the existing plan. You want to make sure that the company subscribes to a support plan that allows this functionality, while keeping expenses to a minimum. Solution: You recommend that the company subscribes to the Professional Direct support plan. Does the solution meet the goal?",
       "options": [
@@ -31,7 +46,7 @@
       "reference": "https://azure.microsoft.com/en-gb/support/plans/"
     },
     {
-      "id": "q4",
+      "id":"question4",
       "multi-answer": false,
       "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Software as a Service (SaaS). Does the solution meet the goal?",
       "options": [
@@ -41,7 +56,7 @@
       "answer": "No"
     },
     {
-      "id": "q5",
+      "id":"question5",
       "multi-answer": false,
       "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Platform as a Service (PaaS). Does the solution meet the goal?",
       "options": [
@@ -51,7 +66,7 @@
       "answer": "No"
     },
     {
-      "id": "q6",
+      "id":"question6",
       "multi-answer": false,
       "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Infrastructure as a Service (IaaS). Does the solution meet the goal?",
       "options": [
@@ -61,7 +76,7 @@
       "answer": "Yes"
     },
     {
-      "id": "q7",
+      "id":"question7",
       "multi-answer": false,
       "question": "Your developers have created 10 web applications that must be host on Azure. You need to determine which Azure web tier plan to host the web apps. The web tier plan must meet the following requirements: ✑ The web apps will use custom domains. ✑ The web apps each require 10 GB of storage. ✑ The web apps must each run in dedicated compute instances. ✑ Load balancing between instances must be included. ✑ Costs must be minimized. Which web tier plan should you use?",
       "options": [
@@ -71,10 +86,11 @@
         "Shared"
       ],
       "answer": "Standard",
-      "reference": "http://azure.microsoft.com/en-us/pricing/details/websites/"
+      "reference": "http://azure.microsoft.com/en-us/pricing/details/websites/",
+      "remark": "Additional checkup needed.Standard offers 50 GB of storage space, while Basic only gives 10 GB."
     },
     {
-      "id": "q8",
+      "id":"question8",
       "multi-answer": false,
       "question": "You are planning to migrate a company to Azure. Each of the company's numerous divisions will have an administrator in place to manage the Azure resources used by their respective division.       You want to make sure that the Azure deployment you employ allows for Azure to be segmented for the divisions, while keeping administrative effort to a minimum.       Solution: You plan to make use of several Azure Active Directory (Azure AD) directories.       Does the solution meet the goal?",
       "options": [
@@ -84,7 +100,7 @@
       "answer": "No"
     },
     {
-      "id": "q9",
+      "id":"question9",
       "multi-answer": false,
       "question": "Your developers have created a portal web app for users in the Miami branch office. The web app will be publicly accessible and used by the Miami users to retrieve customer and product information. The web app is currently running in an on-premises test environment.       You plan to host the web app on Azure.       You need to determine which Azure web tier plan to host the web app. The web tier plan must meet the following requirements:       ✑ The website will use the miami.weyland.com URL.       ✑ The website will be deployed to two instances.       ✑ SSL support must be included.       ✑ The website requires 12 GB of storage.       ✑ Costs must be minimized.       Which web tier plan should you use?",
       "options": [
@@ -97,118 +113,266 @@
       "reference": "http://azure.microsoft.com/en-us/documentation/articles/azure-subscription-service-limits/"
     },
     {
-      "id": "q10",
+      "id":"question10",
       "multi-answer": false,
       "question": "Your company is planning to migrate all their virtual machines to an Azure pay-as-you-go subscription. The virtual machines are currently hosted on the Hyper-V hosts in a data center.       You are required make sure that the intended Azure solution uses the correct expenditure model.       Solution: You should recommend the use of the elastic expenditure model.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "No"
     },
     {
-      "id": "q11",
+      "id":"question11",
       "multi-answer": false,
       "question": "Your company is planning to migrate all their virtual machines to an Azure pay-as-you-go subscription. The virtual machines are currently hosted on the Hyper-V hosts in a data center.       You are required make sure that the intended Azure solution uses the correct expenditure model.       Solution: You should recommend the use of the scalable expenditure model.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "No"
     },
     {
-      "id": "q12",
+      "id":"question12",
       "multi-answer": false,
       "question": "Your company is planning to migrate all their virtual machines to an Azure pay-as-you-go subscription. The virtual machines are currently hosted on the Hyper-V hosts in a data center.       You are required make sure that the intended Azure solution uses the correct expenditure model.       Solution: You should recommend the use of the operational expenditure model.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "Yes"
     },
     {
-      "id": "q13",
+      "id":"question13",
       "multi-answer": false,
       "question": "You are required to deploy an Artificial Intelligence (AI) solution in Azure.       You want to make sure that you are able to build, test, and deploy predictive analytics for the solution.       Solution: You should make use of Azure Cosmos DB.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "No"
     },
     {
-      "id": "q14",
+      "id":"question14",
       "multi-answer": false,
       "question": "Your company's Active Directory forest includes thousands of user accounts.       You have been informed that all network resources will be migrated to Azure. Thereafter, the on-premises data center will be retired.       You are required to employ a strategy that reduces the effect on users, once the planned migration has been completed.       Solution: You plan to sync all the Active Directory user accounts to Azure Active Directory (Azure AD).       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "Yes"
     },
     {
-      "id": "q15",
+      "id":"question15",
       "multi-answer": false,
       "question": "You are required to deploy an Artificial Intelligence (AI) solution in Azure.       You want to make sure that you are able to build, test, and deploy predictive analytics for the solution.       Solution: You should make use of Azure Machine Learning Studio.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "Yes"
     },
     {
-      "id": "q16",
+      "id":"question16",
       "multi-answer": false,
       "question": "Your company's infrastructure includes a number of business units that each need a large number of various Azure resources for everyday operation.      The resources required by each business unit are identical.       You are required to sanction a strategy to create Azure resources automatically.       Solution: You recommend that the Azure API Management service be included in the strategy.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "No"
     },
     {
-      "id": "q17",
+      "id":"question17",
       "multi-answer": false,
       "question": "Your company's infrastructure includes a number of business units that each need a large number of various Azure resources for everyday operation.      The resources required by each business unit are identical.      You are required to sanction a strategy to create Azure resources automatically.       Solution: You recommend that management groups be included in the strategy.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
-      "answer": "No"
+      ],
+      "answer": "No",
+      "remark": "Additional checkup needed."
     },
     {
-      "id": "q18",
+      "id":"question18",
       "multi-answer": false,
       "question": "Your company's infrastructure includes a number of business units that each need a large number of various Azure resources for everyday operation.      The resources required by each business unit are identical.       You are required to sanction a strategy to create Azure resources automatically.       Solution: You recommend that the Azure Resource Manager templates be included in the strategy.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "Yes"
     },
     {
-      "id": "q19",
+      "id":"question19",
       "multi-answer": false,
       "question": "You are tasked with deploying a critical LOB application, which will be installed on a virtual machine, to Azure.      You are informed that the application deployment strategy should allow for a guaranteed availability of 99.99 percent. You need to make sure that the strategy requires as little virtual machines and availability zones as possible.      Solution: You include two virtual machines and one availability zone in your strategy.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "No",
-      "reference":"https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
     },
     {
-      "id": "q20",
+      "id":"question20",
       "multi-answer": false,
       "question": "You are tasked with deploying a critical LOB application, which will be installed on a virtual machine, to Azure.       You are informed that the application deployment strategy should allow for a guaranteed availability of 99.99 percent. You need to make sure that the strategy requires as little virtual machines and availability zones as possible.       Solution: You include one virtual machine and two availability zones in your strategy.       Does the solution meet the goal?",
       "options": [
         "Yes",
         "No"
-        ],
+      ],
       "answer": "No",
-      "reference":"https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+    },
+    {
+      "id":"question21",
+      "multi-answer": false,
+      "question": "You are tasked with deploying a critical LOB application, which will be installed on a virtual machine, to Azure.    You are informed that the application deployment strategy should allow for a guaranteed availability of 99.99 percent. You need to make sure that the strategy requires as little virtual machines and availability zones as possible.    Solution: You include two virtual machines and two availability zones in your strategy.    Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+    },
+    {
+      "id":"question22",
+      "multi-answer": false,
+      "question": "Your company's developers intend to deploy a large number of custom virtual machines on a weekly basis. They will also be removing these virtual machines during the same week it was deployed. Sixty percent of the virtual machines have Windows Server 2016 installed, while the other forty percent has Ubuntu Linux installed.       You are required to make sure that the administrative effort, needed for this process, is reduced by employing a suitable Azure service.       Solution: You recommend the use of Microsoft Managed Desktop.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "id":"question23",
+      "multi-answer": false,
+      "question": "Your company's developers intend to deploy a large number of custom virtual machines on a weekly basis. They will also be removing these virtual machines during the same week it was deployed. Sixty percent of the virtual machines have Windows Server 2016 installed, while the other forty percent has Ubuntu Linux installed.      You are required to make sure that the administrative effort, needed for this process, is reduced by employing a suitable Azure service.      Solution: You recommend the use of Azure Reserved Virtual Machines (VM) Instances.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "id":"question24",
+      "multi-answer": false,
+      "question": "Your company's developers intend to deploy a large number of custom virtual machines on a weekly basis. They will also be removing these virtual machines during the same week it was deployed. Sixty percent of the virtual machines have Windows Server 2016 installed, while the other forty percent has Ubuntu Linux installed.      You are required to make sure that the administrative effort, needed for this process, is reduced by employing a suitable Azure service.      Solution: You recommend the use of Azure DevTest Labs.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+    },
+    {
+      "id":"question25",
+      "multi-answer": false,
+      "question": "Your company has virtual machines (VMs) hosted in Microsoft Azure. The VMs are located in a single Azure virtual network named VNet1.      The company has users that work remotely. The remote workers require access to the VMs on VNet1.      You need to provide access for the remote workers.      What should you do?",
+      "options": [
+        "A. Configure a Site-to-Site (S2S) VPN.",
+        "B. Configure a VNet-toVNet VPN.",
+        "C. Configure a Point-to-Site (P2S) VPN.",
+        "D. Configure DirectAccess on a Windows Server 2012 server VM.",
+        "E. Configure a Multi-Site VPN"
+      ],
+      "answer": "C. Configure a Point-to-Site (P2S) VPN.",
+      "reference": "A Point-to-Site (P2S) VPN gateway connection lets you create a secure connection to your virtual network from an individual client computer.      References:      https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways"
+    },
+    {
+      "id":"question26",
+      "multi-answer": false,
+      "question": "You have been informed by your superiors of the company's intentions to automate server deployment to Azure. There is, however, some concern that administrative credentials could be uncovered during this process.      You are required to make sure that during the deployment, the administrative credentials are encrypted using a suitable Azure solution.      Solution: You recommend the use of Azure Information Protection.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "id":"question27",
+      "multi-answer": false,
+      "question": "You have been informed by your superiors of the company's intentions to automate server deployment to Azure. There is, however, some concern that administrative credentials could be uncovered during this process.      You are required to make sure that during the deployment, the administrative credentials are encrypted using a suitable Azure solution.      Solution: You recommend the use of Azure Multi-Factor Authentication (MFA).      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "id":"question28",
+      "multi-answer": true,
+      "question": "The company would like to develop a cloud solution by making use of Azure Government. Azure Government can only be used by certain types of clients to develop cloud solutions.      Which of the following are the types of customers that can make use of Azure Government in this situation? Answer by dragging the correct option from the list to the answer area.",
+      "options": [
+        "A government contractor from any country",
+        "A qovernment entityfrom any country.",
+        "A European government contractor",
+        "A European government entity",
+        "A United States government contractor",
+        "A Unined States government entity"
+      ],
+      "answer": [
+        "A United States government contractor",
+        "A Unined States government entity"
+      ]
+    },
+    {
+      "id":"question29",
+      "multi-answer": false,
+      "question": "Your company has an Azure Active Directory (Azure AD) environment. Users occasionally connect to Azure AD via the Internet.      You have been tasked with making sure that users who connect to Azure AD via the internet from an unidentified IP address, are automatically encouraged to change passwords.      Solution: You configure the use of Azure AD Identity Protection.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes",
+      "reference":"https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/howto-sign-in-risk-policy"
+    },
+    {
+      "id":"question30",
+      "multi-answer": false,
+      "question": "Your company has an Azure Active Directory (Azure AD) environment. Users occasionally connect to Azure AD via the Internet.      You have been tasked with making sure that users who connect to Azure AD via the internet from an unidentified IP address, are automatically encouraged to change passwords.      Solution: You configure the use of Azure AD Privileged Identity Management.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "reference":"https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/howto-sign-in-risk-policy"
+    },
+    {
+      "id":"question31",
+      "multi-answer": false,
+      "question": "You are planning a strategy to deploy numerous web servers and database servers to Azure.      This strategy should allow for connection types between the web servers and database servers to be controlled.      Solution: You include network security groups (NSGs) in your strategy.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "Yes"
+
+    },
+    {
+      "id":"question32",
+      "multi-answer": false,
+      "question": "You are planning a strategy to deploy numerous web servers and database servers to Azure.      This strategy should allow for connection types between the web servers and database servers to be controlled.      Solution: You include a local network gateway in your strategy.      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+
+    },
+    {
+      "id":"question33",
+      "multi-answer": false,
+      "question": "Your company's Active Directory forest includes thousands of user accounts.      You have been informed that all network resources will be migrated to Azure. Thereafter, the on-premises data center will be retired.      You are required to employ a strategy that reduces the effect on users, once the planned migration has been completed.      Solution: You plan to require Azure Multi-Factor Authentication (MFA).      Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+
     }
-
-
   ]
 }
