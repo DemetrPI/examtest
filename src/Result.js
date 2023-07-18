@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Heading, Text, VStack, Divider } from '@chakra-ui/react';
+import { Box, Heading, Text, VStack, Divider, Link } from '@chakra-ui/react';
 
-const Result = ({ score, questions, userAnswers}) => {
+const Result = ({ score, questions, userAnswers }) => {
 
   return (
     <VStack spacing={4} align="stretch" p={8}>
@@ -20,9 +20,15 @@ const Result = ({ score, questions, userAnswers}) => {
         return (
           <Box key={index}>
             <Heading as="h3" size="lg">Question #{index + 1}</Heading>
-            <Text>{answer.question}</Text>
+            <Text>{question.question}</Text>
             <Text>Your answer: <Text as="span" color={userAnswerColor}>{userAnswer}</Text></Text>
             <Text>Correct answer: <Text as="span" color={correctAnswerColor}>{correctAnswer}</Text></Text>
+            {question.reference && (
+              <Text>
+                Reference: <Link href={question.reference} color="teal.500" isExternal>{question.reference}</Link>
+              </Text>
+            )}
+            {question.remark && <Text>Remark: {question.remark}</Text>}
             <Divider />
           </Box>
         );

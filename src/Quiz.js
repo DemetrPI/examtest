@@ -14,7 +14,8 @@ import Question from "./Question";
 import Timer from "./Timer";
 import Result from "./Result";
 import ResultModal from "./ResultModal";
-import questionsData from "./quest.json";
+// import questionsData from "./questMain.json";
+import questionsData from "./questTest.json";
 
 const Quiz = () => {
   // state variables
@@ -54,13 +55,13 @@ const Quiz = () => {
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
     // setAttemptedToLeave(false);
-    setQuestions(shuffledQuestions.slice(0, 3));
+    setQuestions(shuffledQuestions.slice(0, 6));
   };
 
   // Use the questions data directly
   useEffect(() => {
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 3));
+    setQuestions(shuffledQuestions.slice(0, 6));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 

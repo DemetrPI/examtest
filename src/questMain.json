@@ -1,0 +1,819 @@
+{
+  "quiz": [
+    {
+      "id": "Question-1",
+      "multi-answer": true,
+      "question": "Your company intends to subscribe to an Azure support plan. The support plan must allow for new support requests to be opened. Which of the following are support plans that will allow this?",
+      "options": ["Basic", "Developer", "Standard", "Prof.direct", "Premier"],
+      "answer": ["Developer", "Standard", "Prof.direct", "Premier"]
+    },
+    {
+      "id": "Question-2",
+      "multi-answer": false,
+      "question": "Your company has datacenters in Los Angeles and New York. The company has a Microsoft Azure subscription.       You are configuring the two datacenters as geo-clustered sites for site resiliency.       You need to recommend an Azure storage redundancy option.      You have the following data storage requirements:      ✑ Data must be stored on multiple nodes.      ✑ Data must be stored on nodes in separate geographic locations.      ✑ Data can be read from the secondary location as well as from the primary location       Which of the following Azure stored redundancy options should you recommend?",
+      "options": [
+        "A. Geo-redundant storage",
+        "B. Read-only geo-redundant storage",
+        "C. Zone-redundant storage",
+        "D. Locally redundant storage"
+      ],
+      "answer": ["B. Read-only geo-redundant storage"],
+      "reference": "https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage",
+      "remark": "RA-GRS allows you to have higher read availability for your storage account by providing ג€read onlyג€ access to the data replicated to the secondary location. Once you enable this feature, the secondary location may be used to achieve higher availability in the event the data is not available in the primary region. This is an optional feature which requires the storage account be geo-replicated."
+    },
+    {
+      "id": "Question-3",
+      "multi-answer": false,
+      "question": "Your company's Azure subscription includes a Basic support plan. They would like to request an assessment of an Azure environment's design from Microsoft. This is, however, not supported by the existing plan. You want to make sure that the company subscribes to a support plan that allows this functionality, while keeping expenses to a minimum. Solution: You recommend that the company subscribes to the Professional Direct support plan. Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "reference": "https://azure.microsoft.com/en-gb/support/plans/"
+    },
+    {
+      "id": "Question-4",
+      "multi-answer": false,
+      "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Software as a Service (SaaS). Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-5",
+      "multi-answer": false,
+      "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Platform as a Service (PaaS). Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-6",
+      "multi-answer": false,
+      "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Infrastructure as a Service (IaaS). Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-7",
+      "multi-answer": false,
+      "question": "Your developers have created 10 web applications that must be host on Azure. You need to determine which Azure web tier plan to host the web apps. The web tier plan must meet the following requirements: ✑ The web apps will use custom domains. ✑ The web apps each require 10 GB of storage. ✑ The web apps must each run in dedicated compute instances. ✑ Load balancing between instances must be included. ✑ Costs must be minimized. Which web tier plan should you use?",
+      "options": ["Standard", "Basic", "Free", "Shared"],
+      "answer": "Standard",
+      "reference": "http://azure.microsoft.com/en-us/pricing/details/websites/",
+      "remark": "Additional checkup needed.Standard offers 50 GB of storage space, while Basic only gives 10 GB."
+    },
+    {
+      "id": "Question-8",
+      "multi-answer": false,
+      "question": "You are planning to migrate a company to Azure. Each of the company's numerous divisions will have an administrator in place to manage the Azure resources used by their respective division.       You want to make sure that the Azure deployment you employ allows for Azure to be segmented for the divisions, while keeping administrative effort to a minimum.       Solution: You plan to make use of several Azure Active Directory (Azure AD) directories.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-9",
+      "multi-answer": false,
+      "question": "Your developers have created a portal web app for users in the Miami branch office. The web app will be publicly accessible and used by the Miami users to retrieve customer and product information. The web app is currently running in an on-premises test environment.       You plan to host the web app on Azure.       You need to determine which Azure web tier plan to host the web app. The web tier plan must meet the following requirements:       ✑ The website will use the miami.weyland.com URL.       ✑ The website will be deployed to two instances.       ✑ SSL support must be included.       ✑ The website requires 12 GB of storage.       ✑ Costs must be minimized.       Which web tier plan should you use?",
+      "options": ["Standard", "Basic", "Free", "Shared"],
+      "answer": "Standard",
+      "reference": "http://azure.microsoft.com/en-us/documentation/articles/azure-subscription-service-limits/"
+    },
+    {
+      "id": "Question-10",
+      "multi-answer": false,
+      "question": "Your company is planning to migrate all their virtual machines to an Azure pay-as-you-go subscription. The virtual machines are currently hosted on the Hyper-V hosts in a data center.       You are required make sure that the intended Azure solution uses the correct expenditure model.       Solution: You should recommend the use of the elastic expenditure model.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-11",
+      "multi-answer": false,
+      "question": "Your company is planning to migrate all their virtual machines to an Azure pay-as-you-go subscription. The virtual machines are currently hosted on the Hyper-V hosts in a data center.       You are required make sure that the intended Azure solution uses the correct expenditure model.       Solution: You should recommend the use of the scalable expenditure model.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-12",
+      "multi-answer": false,
+      "question": "Your company is planning to migrate all their virtual machines to an Azure pay-as-you-go subscription. The virtual machines are currently hosted on the Hyper-V hosts in a data center.       You are required make sure that the intended Azure solution uses the correct expenditure model.       Solution: You should recommend the use of the operational expenditure model.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-13",
+      "multi-answer": false,
+      "question": "You are required to deploy an Artificial Intelligence (AI) solution in Azure.       You want to make sure that you are able to build, test, and deploy predictive analytics for the solution.       Solution: You should make use of Azure Cosmos DB.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-14",
+      "multi-answer": false,
+      "question": "Your company's Active Directory forest includes thousands of user accounts.       You have been informed that all network resources will be migrated to Azure. Thereafter, the on-premises data center will be retired.       You are required to employ a strategy that reduces the effect on users, once the planned migration has been completed.       Solution: You plan to sync all the Active Directory user accounts to Azure Active Directory (Azure AD).       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-15",
+      "multi-answer": false,
+      "question": "You are required to deploy an Artificial Intelligence (AI) solution in Azure.       You want to make sure that you are able to build, test, and deploy predictive analytics for the solution.       Solution: You should make use of Azure Machine Learning Studio.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-16",
+      "multi-answer": false,
+      "question": "Your company's infrastructure includes a number of business units that each need a large number of various Azure resources for everyday operation.      The resources required by each business unit are identical.       You are required to sanction a strategy to create Azure resources automatically.       Solution: You recommend that the Azure API Management service be included in the strategy.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-17",
+      "multi-answer": false,
+      "question": "Your company's infrastructure includes a number of business units that each need a large number of various Azure resources for everyday operation.      The resources required by each business unit are identical.      You are required to sanction a strategy to create Azure resources automatically.       Solution: You recommend that management groups be included in the strategy.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "remark": "Additional checkup needed."
+    },
+    {
+      "id": "Question-18",
+      "multi-answer": false,
+      "question": "Your company's infrastructure includes a number of business units that each need a large number of various Azure resources for everyday operation.      The resources required by each business unit are identical.       You are required to sanction a strategy to create Azure resources automatically.       Solution: You recommend that the Azure Resource Manager templates be included in the strategy.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-19",
+      "multi-answer": false,
+      "question": "You are tasked with deploying a critical LOB application, which will be installed on a virtual machine, to Azure.      You are informed that the application deployment strategy should allow for a guaranteed availability of 99.99 percent. You need to make sure that the strategy requires as little virtual machines and availability zones as possible.      Solution: You include two virtual machines and one availability zone in your strategy.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+    },
+    {
+      "id": "Question-20",
+      "multi-answer": false,
+      "question": "You are tasked with deploying a critical LOB application, which will be installed on a virtual machine, to Azure.       You are informed that the application deployment strategy should allow for a guaranteed availability of 99.99 percent. You need to make sure that the strategy requires as little virtual machines and availability zones as possible.       Solution: You include one virtual machine and two availability zones in your strategy.       Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+    },
+    {
+      "id": "Question-21",
+      "multi-answer": false,
+      "question": "You are tasked with deploying a critical LOB application, which will be installed on a virtual machine, to Azure.    You are informed that the application deployment strategy should allow for a guaranteed availability of 99.99 percent. You need to make sure that the strategy requires as little virtual machines and availability zones as possible.    Solution: You include two virtual machines and two availability zones in your strategy.    Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes",
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-overview"
+    },
+    {
+      "id": "Question-22",
+      "multi-answer": false,
+      "question": "Your company's developers intend to deploy a large number of custom virtual machines on a weekly basis. They will also be removing these virtual machines during the same week it was deployed. Sixty percent of the virtual machines have Windows Server 2016 installed, while the other forty percent has Ubuntu Linux installed.       You are required to make sure that the administrative effort, needed for this process, is reduced by employing a suitable Azure service.       Solution: You recommend the use of Microsoft Managed Desktop.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-23",
+      "multi-answer": false,
+      "question": "Your company's developers intend to deploy a large number of custom virtual machines on a weekly basis. They will also be removing these virtual machines during the same week it was deployed. Sixty percent of the virtual machines have Windows Server 2016 installed, while the other forty percent has Ubuntu Linux installed.      You are required to make sure that the administrative effort, needed for this process, is reduced by employing a suitable Azure service.      Solution: You recommend the use of Azure Reserved Virtual Machines (VM) Instances.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-24",
+      "multi-answer": false,
+      "question": "Your company's developers intend to deploy a large number of custom virtual machines on a weekly basis. They will also be removing these virtual machines during the same week it was deployed. Sixty percent of the virtual machines have Windows Server 2016 installed, while the other forty percent has Ubuntu Linux installed.      You are required to make sure that the administrative effort, needed for this process, is reduced by employing a suitable Azure service.      Solution: You recommend the use of Azure DevTest Labs.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-25",
+      "multi-answer": false,
+      "question": "Your company has virtual machines (VMs) hosted in Microsoft Azure. The VMs are located in a single Azure virtual network named VNet1.      The company has users that work remotely. The remote workers require access to the VMs on VNet1.      You need to provide access for the remote workers.      What should you do?",
+      "options": [
+        "A. Configure a Site-to-Site (S2S) VPN.",
+        "B. Configure a VNet-toVNet VPN.",
+        "C. Configure a Point-to-Site (P2S) VPN.",
+        "D. Configure DirectAccess on a Windows Server 2012 server VM.",
+        "E. Configure a Multi-Site VPN"
+      ],
+      "answer": "C. Configure a Point-to-Site (P2S) VPN.",
+      "reference": "A Point-to-Site (P2S) VPN gateway connection lets you create a secure connection to your virtual network from an individual client computer.      References:      https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways"
+    },
+    {
+      "id": "Question-26",
+      "multi-answer": false,
+      "question": "You have been informed by your superiors of the company's intentions to automate server deployment to Azure. There is, however, some concern that administrative credentials could be uncovered during this process.      You are required to make sure that during the deployment, the administrative credentials are encrypted using a suitable Azure solution.      Solution: You recommend the use of Azure Information Protection.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-27",
+      "multi-answer": false,
+      "question": "You have been informed by your superiors of the company's intentions to automate server deployment to Azure. There is, however, some concern that administrative credentials could be uncovered during this process.      You are required to make sure that during the deployment, the administrative credentials are encrypted using a suitable Azure solution.      Solution: You recommend the use of Azure Multi-Factor Authentication (MFA).      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-28",
+      "multi-answer": true,
+      "question": "The company would like to develop a cloud solution by making use of Azure Government. Azure Government can only be used by certain types of clients to develop cloud solutions.      Which of the following are the types of customers that can make use of Azure Government in this situation? Answer by dragging the correct option from the list to the answer area.",
+      "options": [
+        "A government contractor from any country",
+        "A qovernment entityfrom any country.",
+        "A European government contractor",
+        "A European government entity",
+        "A United States government contractor",
+        "A Unined States government entity"
+      ],
+      "answer": [
+        "A United States government contractor",
+        "A Unined States government entity"
+      ]
+    },
+    {
+      "id": "Question-29",
+      "multi-answer": false,
+      "question": "Your company has an Azure Active Directory (Azure AD) environment. Users occasionally connect to Azure AD via the Internet.      You have been tasked with making sure that users who connect to Azure AD via the internet from an unidentified IP address, are automatically encouraged to change passwords.      Solution: You configure the use of Azure AD Identity Protection.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes",
+      "reference": "https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/howto-sign-in-risk-policy"
+    },
+    {
+      "id": "Question-30",
+      "multi-answer": false,
+      "question": "Your company has an Azure Active Directory (Azure AD) environment. Users occasionally connect to Azure AD via the Internet.      You have been tasked with making sure that users who connect to Azure AD via the internet from an unidentified IP address, are automatically encouraged to change passwords.      Solution: You configure the use of Azure AD Privileged Identity Management.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "reference": "https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/howto-sign-in-risk-policy"
+    },
+    {
+      "id": "Question-31",
+      "multi-answer": false,
+      "question": "You are planning a strategy to deploy numerous web servers and database servers to Azure.      This strategy should allow for connection types between the web servers and database servers to be controlled.      Solution: You include network security groups (NSGs) in your strategy.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes"
+    },
+    {
+      "id": "Question-32",
+      "multi-answer": false,
+      "question": "You are planning a strategy to deploy numerous web servers and database servers to Azure.      This strategy should allow for connection types between the web servers and database servers to be controlled.      Solution: You include a local network gateway in your strategy.      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-33",
+      "multi-answer": false,
+      "question": "Your company's Active Directory forest includes thousands of user accounts.      You have been informed that all network resources will be migrated to Azure. Thereafter, the on-premises data center will be retired.      You are required to employ a strategy that reduces the effect on users, once the planned migration has been completed.      Solution: You plan to require Azure Multi-Factor Authentication (MFA).      Does the solution meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No"
+    },
+    {
+      "id": "Question-34",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it if the statement is true.",
+      "options": [
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides full control of the operating systes that hosts applications.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides the ability to scale the platform automatically.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides professional development services to continuosly add features to custom applications."
+      ],
+      "answer": [
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides the ability to scale the platform automatically.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides professional development services to continuosly add features to custom applications."
+      ],
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-paas/",
+      "remark": "Box 1: No -       A PaaS solution does not provide access to the operating system. The Azure Web Apps service provides an environment for you to host your web applications.      Behind the scenes, the web apps are hosted on virtual machines running IIS. However, you have no direct access to the virtual machine, the operating system or      IIS.      Box 2: Yes -      A PaaS solution that hosts web apps in Azure does provide the ability to scale the platform automatically. This is known as autoscaling. Behind the scenes, the web apps are hosted on virtual machines running IIS. Autoscaling means adding more load balanced virtual machines to host the web apps.      Box 3: Yes -     PaaS provides a framework that developers can build upon to develop or customize cloud-based applications. PaaS development tools can cut the time it takes to code new apps with pre-coded application components built into the platform, such as workflow, directory services, security features, search and so on."
+    },
+    {
+      "id": "Question-35",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it if the statement is true.",
+      "options": [
+        "A Azure provides flexibility between capital expenditure (CapEx) and operational expenditre (OpEx).",
+        "If you create two Azure virtual machines that use B2S size, eaach VM will always generate the same monthly costs.",
+        "When an Azure VM is stopped, you continue to pay storage costs associated to the VM."
+      ],
+      "answer": [
+        "A Azure provides flexibility between capital expenditure (CapEx) and operational expenditre (OpEx).",
+        "When an Azure VM is stopped, you continue to pay storage costs associated to the VM."
+      ],
+      "reference": "https://meritsolutions.com/capex-vs-opex-cloud-computing-blog/",
+      "remark": "Box 1: Yes -       Traditionally, IT expenses have been considered a Capital Expenditure (CapEx). Today, with the move to the cloud and the pay-as-you-go model, organizations have the ability to stretch their budgets and are shifting their IT CapEx costs to Operating Expenditures (OpEx) instead. This flexibility, in accounting terms, is now an option due to the ג€as a Serviceג€ model of purchasing software, cloud storage and other IT related resources.      Box 2: No -      Two virtual machines using the same size could have different disk configurations. Therefore, the monthly costs could be different.      Box 3: Yes -       When an Azure virtual machine is stopped, you don't pay for the virtual machine. However, you do still pay for the storage costs associated to the virtual machine.      The most common storage costs are for the disks attached to the virtual machines. There are also other storage costs associated with a virtual machine such as storage for diagnostic data and virtual machine backups."
+    },
+    {
+      "id": "Question-36",
+      "multi-answer": false,
+      "question": "When you are implementing a Software as a Service (SaaS) solution, you are responsible for _______",
+      "options": [
+        "configuring high availability",
+        "defining scalability rules",
+        "installing th SaaS solution",
+        "configuring the SaaS solution"
+      ],
+      "answer": "configuring the SaaS solution",
+      "reference": [
+        "https://azure.microsoft.com/en-in/overview/what-is-saas/",
+        "https://docs.microsoft.com/en-gb/learn/modules/principles-cloud-computing/5-types-of-cloud-services"
+      ],
+      "remark": "When you are implementing a Software as a Service (SaaS) solution, you are responsible for configuring the SaaS solution. Everything else is managed by the cloud provider.      SaaS requires the least amount of management. The cloud provider is responsible for managing everything, and the end user just uses the software.      Software as a service (SaaS) allows users to connect to and use cloud-based apps over the Internet. Common examples are email, calendaring and office tools      (such as Microsoft Office 365).      SaaS provides a complete software solution which you purchase on a pay-as-you-go basis from a cloud service provider. You rent the use of an app for your organization and your users connect to it over the Internet, usually with a web browser. All of the underlying infrastructure, middleware, app software and app data are located in the service provider's data center. The service provider manages the hardware and software and with the appropriate service agreement, will ensure the availability and the security of the app and your data as well."
+    },
+    {
+      "id": "Question-37",
+      "multi-answer": false,
+      "question": "You have an on-premises network that contains several servers.     You plan to migrate all the servers to Azure.     You need to recommend a solution to ensure that some of the servers are available if a single Azure data center goes offline for an extended period.     What should you include in the recommendation?   A. fault tolerance    B. elasticity     C. scalability     D. low latency",
+      "options": [
+        "A. fault tolerance",
+        "B. elasticity",
+        "C. scalability",
+        "D. low latency"
+      ],
+      "answer": "A. fault tolerance",
+      "remark": "Fault tolerance is the ability of a system to continue to function in the event of a failure of some of its components.       In this question, you could have servers that are replicated across datacenters.      Availability zones expand the level of control you have to maintain the availability of the applications and data on your VMs. Availability Zones are unique physical locations within an Azure region. Each zone is made up of one or more datacenters equipped with independent power, cooling, and networking. To ensure resiliency, there are a minimum of three separate zones in all enabled regions. The physical separation of Availability Zones within a region protects applications and data from datacenter failures.      With Availability Zones, Azure offers industry best 99.99% VM uptime SLA. By architecting your solutions to use replicated VMs in zones, you can protect your applications and data from the loss of a datacenter. If one zone is compromised, then replicated apps and data are instantly available in another zone.",
+      "reference": "https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability"
+    },
+    {
+      "id": "Question-38",
+      "multi-answer": false,
+      "question": "An organization that hosts its infrastructure in ______ no longer requires a data center",
+      "options": [
+        "in a private cloud",
+        "in a hybrid cloud",
+        "in the public cloud",
+        "on a Hyper-V host"
+      ],
+      "answer": "in the public cloud",
+      "remark": "A private cloud is hosted in your datacenter. Therefore, you cannot close your datacenter if you are using a private cloud.      A public cloud is hosted externally, for example, in Microsoft Azure. An organization that hosts its infrastructure in a public cloud can close its data center.      Public cloud is the most common deployment model. In this case, you have no local hardware to manage or keep up-to-date everything runs on your cloud provider's hardware.      Microsoft Azure is an example of a public cloud provider.      In a private cloud, you create a cloud environment in your own datacenter and provide self-service access to compute resources to users in your organization.      This offers a simulation of a public cloud to your users, but you remain completely responsible for the purchase and maintenance of the hardware and software services you provide.",
+      "reference": "https://docs.microsoft.com/en-gb/learn/modules/principles-cloud-computing/4-cloud-deployment-models"
+    },
+    {
+      "id": "Question-39",
+      "multi-answer": true,
+      "question": "What are two characteristics of the public cloud? Each correct answer presents a complete solution.       NOTE: Each correct selection is worth one point",
+      "options": [
+        "A. dedicated hardware",
+        "B. unsecured connections",
+        "C. limited storage",
+        "D. metered pricing",
+        "E. self-service management"
+      ],
+      "answer": ["D. metered pricing", "E. self-service management"],
+      "remark": "With the public cloud, you get pay-as-you-go pricing you pay only for what you use, no CapEx costs.      With the public cloud, you have self-service management. You are responsible for the deployment and configuration of the cloud resources such as virtual machines or web sites. The underlying hardware that hosts the cloud resources is managed by the cloud provider.      Incorrect Answers:      A: You don't have dedicated hardware. The underlying hardware is shared so you could have multiple customers using cloud resources hosted on the same physical hardware.       B: Connections to the public cloud are secure.      C: Storage is not limited. You can have as much storage as you like.",
+      "reference": "https://docs.microsoft.com/en-gb/learn/modules/principles-cloud-computing/4-cloud-deployment-models"
+    },
+    {
+      "id": "Question-40",
+      "multi-answer": false,
+      "question": "When planning to migrate a public website to Azure, you must plan to _________",
+      "options": [
+        "deploy a VPN",
+        "pay monthly usage costs",
+        "pay to transfer all the ebsite data to Azure",
+        "reduce the number of connections to the website"
+      ],
+      "answer": "pay monthly usage costs",
+      "remark": "When planning to migrate a public website to Azure, you must plan to pay monthly usage costs. This is because Azure uses the pay-as-you-go model."
+    },
+    {
+      "id": "Question-41",
+      "multi-answer": false,
+      "question": "Your company plans to migrate all its data and resources to Azure.    The company's migration plan states that only Platform as a Service (PaaS) solutions must be used in Azure.    You need to deploy an Azure environment that meets the company migration plan.    Solution: You create an Azure App Service and Azure SQL databases.    Does this meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes",
+      "remark": "Azure App Service and Azure SQL databases are examples of Azure PaaS solutions. Therefore, this solution does meet the goal."
+    },
+    {
+      "id": "Question-42",
+      "multi-answer": false,
+      "question": "Your company plans to migrate all its data and resources to Azure.      The company's migration plan states that only Platform as a Service (PaaS) solutions must be used in Azure.      You need to deploy an Azure environment that meets the company migration plan.      Solution: You create an Azure App Service and Azure virtual machines that have Microsoft SQL Server installed.      Does this meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "Yes",
+      "remark": "Azure App Service is a PaaS (Platform as a Service) service. Azure virtual machines are an IaaS (Infrastructure as a Service) service, and a Paas service.      Therefore, this solution does meet the goal.       Note: Like IaaS, PaaS includes infrastructure servers, storage, and networking, but also middleware, development tools, business intelligence (BI) services, database management systems, and more. PaaS is designed to support the complete web application lifecycle: building, testing, deploying, managing, and updating. NEED CHEKUP!!!!!",
+      "reference": "https://azure.microsoft.com/en-us/overview/what-is-paas/"
+    },
+    {
+      "id": "Question-43",
+      "multi-answer": false,
+      "question": "Your company plans to migrate all its data and resources to Azure.      The company's migration plan states that only Platform as a Service (PaaS) solutions must be used in Azure.       You need to deploy an Azure environment that meets the company migration plan.      Solution: You create an Azure App Service and Azure Storage accounts.      Does this meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "remark": "NEED CHECKUP!!!",
+      "reference": "https://learn.microsoft.com/en-us/training/modules/azure-networking-fundamentals/azure-virtual-network-fundamentals"
+    },
+    {
+      "id": "Question-44",
+      "multi-answer": false,
+      "question": "Your company hosts an accounting application named App1 that is used by all the customers of the company.    App1 has low usage during the first three weeks of each month and very high usage during the last week of each month.    Which benefit of Azure Cloud Services supports cost management for this type of usage pattern?",
+      "options": [
+        "A. high availability",
+        "B. high latency",
+        "C. elasticity",
+        "D. load balancing"
+      ],
+      "answer": "C. elasticity",
+      "remark": "Elasticity in this case is the ability to provide additional compute resource when needed and reduce the compute resource when not needed to reduce costs.    Autoscaling is an example of elasticity.     Elastic computing is the ability to quickly expand or decrease computer processing, memory and storage resources to meet changing demands without worrying about capacity planning and engineering for peak usage. Typically controlled by system monitoring tools, elastic computing matches the amount of resources allocated to the amount of resources actually needed without disrupting operations. With cloud elasticity, a company avoids paying for unused capacity or idle resources and doesn't have to worry about investing in the purchase or maintenance of additional resources and equipment.",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-elastic-computing/"
+    },
+    {
+      "id": "Question-45",
+      "multi-answer": false,
+      "question": "You plan to migrate a web application to Azure. The web application is accessed by external users.      You need to recommend a cloud deployment solution to minimize the amount of administrative effort used to manage the web application.      What should you include in the recommendation?",
+      "options": [
+        "A. Software as a Service (SaaS)",
+        "B. Platform as a Service (PaaS)",
+        "C. Infrastructure as a Service (IaaS)",
+        "D. Database as a Service (DaaS)"
+      ],
+      "answer": "B. Platform as a Service (PaaS)",
+      "remark": "Azure App Service is a platform-as-a-service (PaaS) offering that lets you create web and mobile apps for any platform or device and connect to data anywhere, in the cloud or on-premises. App Service includes the web and mobile capabilities that were previously delivered separately as Azure Websites and Azure Mobile       Services.",
+      "reference": "https://docs.microsoft.com/en-us/azure/security/fundamentals/paas-applications-using-app-services"
+    },
+    {
+      "id": "Question-46a",
+      "multi-answer": false,
+      "question": "Which cloud deployment solution is used for Azure virtual machines?",
+      "options": ["A. IaaS", "B. PaaS", "C. SaaS"],
+      "answer": "A. IaaS",
+      "remark": "Azure virtual machines are Infrastructure as a Service (IaaS).      Infrastructure as a Service is the most flexible category of cloud services. It aims to give you complete control over the hardware that runs your application (IT infrastructure servers and virtual machines (VMs), storage, networks, and operating systems). Instead of buying hardware, with IaaS, you rent it.",
+      "reference": "https://docs.microsoft.com/en-gb/learn/modules/principles-cloud-computing/5-types-of-cloud-services https://docs.microsoft.com/en-us/azure/sql-database/sql-database-paas-index"
+    },
+    {
+      "id": "Question-46b",
+      "multi-answer": false,
+      "question": "Which cloud deployment solution is used for  Azure SQL databases?",
+      "options": ["A. IaaS", "B. PaaS", "C. SaaS"],
+      "answer": "B. PaaS",
+      "remark": "Azure SQL databases are Platform as a Service (Paas).      Azure SQL Database is a fully managed Platform as a Service (PaaS) Database Engine that handles most of the database management functions such as upgrading, patching, backups, and monitoring without user involvement. Azure SQL Database is always running on the latest stable version of SQL Server       Database Engine and patched OS with 99.99% availability. PaaS capabilities that are built-in into Azure SQL database enable you to focus on the domain specific database administration and optimization activities that are critical for your business.",
+      "reference": "https://docs.microsoft.com/en-gb/learn/modules/principles-cloud-computing/5-types-of-cloud-services https://docs.microsoft.com/en-us/azure/sql-database/sql-database-paas-index"
+    },
+    {
+      "id": "Question-47",
+      "multi-answer": false,
+      "question": "You have an on-premises network that contains 100 servers.      You need to recommend a solution that provides additional resources to your users. The solution must minimize capital and operational expenditure costs.      What should you include in the recommendation?",
+      "options": [
+        "A. a complete migration to the public cloud",
+        "B. an additional data cente",
+        "C. a private cloud",
+        "D. a hybrid cloud"
+      ],
+      "answer": "D. a hybrid cloud",
+      "remark": "A hybrid cloud is a combination of a private cloud and a public cloud.      Capital expenditure is the spending of money up-front for infrastructure such as new servers.      With a hybrid cloud, you can continue to use the on-premises servers while adding new servers in the public cloud (Azure for example). Adding new servers in       Azure minimizes the capital expenditure costs as you are not paying for new servers as you would if you deployed new server on-premises.      Incorrect Answers:      A: A complete migration of 100 servers to the public cloud would involve a lot of operational expenditure (the cost of migrating all the servers).      B: An additional data center would involve a lot of capital expenditure (the cost of the new infrastructure).      C: A private cloud is hosted on on-premises servers to this would involve a lot of capital expenditure (the cost of the new infrastructure to host the private cloud).",
+      "reference": "https://docs.microsoft.com/en-gb/learn/modules/principles-cloud-computing/4-cloud-deployment-models"
+    },
+    {
+      "id": "Question-48",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "To achieve a hybrid cloud model, a company must always migrate from a private cloud model",
+        "A company can extend the capacity of its internal network by using the public cloud",
+        "In a public cloud model, only guest users at your company can access the resources in the cloud"
+      ],
+      "answer": "A company can extend the capacity of its internal network by using the public cloud",
+      "remark": "Box 1: No -      It is not true that a company must always migrate from a private cloud model to implement a hybrid cloud. You could start with a public cloud and then combine that with an on-premise infrastructure to implement a hybrid cloud.      Box 2: Yes -      A company can extend the capacity of its internal network by using the public cloud. This is very common. When you need more capacity, rather than pay out for new on-premises infrastructure, you can configure a cloud environment and connect your on-premises network to the cloud environment by using a VPN.      Box 3: No -      It is not true that only guest users can access cloud resources. You can give anyone with an account in Azure Active Directory access to the cloud resources.      There are many authentication scenarios but a common one is to replicate your on-premises Active Directory accounts to Azure Active Directory and provide access to the Azure Active Directory accounts. Another commonly used authentication method is 'Federation' where authentication for access to cloud resources is passed to another authentication provider such as an on-premises Active Directory.",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-hybrid-cloud-computing/"
+    },
+    {
+      "id": "Question-49",
+      "multi-answer": false,
+      "question": "You plan to migrate several servers from an on-premises network to Azure.       What is an advantage of using a public cloud service for the servers over an on-premises network?",
+      "options": [
+        "A. The public cloud is owned by the public, NOT a private corporation",
+        "B. The public cloud is a crowd-sourcing solution that provides corporations with the ability to enhance the cloud",
+        "C. All public cloud resources can be freely accessed by every member of the public",
+        "D. The public cloud is a shared entity whereby multiple corporations each use a portion of the resources in the cloud"
+      ],
+      "answer": "D. The public cloud is a shared entity whereby multiple corporations each use a portion of the resources in the cloud",
+      "remark": "The public cloud is a shared entity whereby multiple corporations each use a portion of the resources in the cloud. The hardware resources (servers, infrastructure etc.) are managed by the cloud provider. Multiple companies create resources such as virtual machines and virtual networks on the hardware resources.      Incorrect Answers:      A: The public cloud is not owned by the public. In the case of Microsoft Azure, the cloud is owned by Microsoft.      B: The public cloud is a not crowd-sourcing solution. In the case of Microsoft Azure, the cloud is owned by Microsoft.      C: It is not true that public cloud resources can be freely accessed by every member of the public. You pay for a cloud subscription and create accounts for your users to access your cloud resources. No one can access your cloud resources until you create user accounts and provide the appropriate access permissions."
+    },
+    {
+      "id": "Question-50",
+      "multi-answer": false,
+      "question": "Azure Site Recovery provides ____________ for virtual machines.",
+      "options": [
+        "fault tolerance",
+        "disaster recovery",
+        "elasticity",
+        "high availability"
+      ],
+      "answer": "fault tolerance",
+      "remark": "Azure Site Recovery helps ensure business continuity by keeping business apps and workloads running during outages. Site Recovery replicates workloads running on physical and virtual machines (VMs) from a primary site to a secondary location.",
+      "reference": "https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-overview"
+    },
+    {
+      "id": "Question-51",
+      "multi-answer": false,
+      "question": "In which type of cloud model are all the hardware resources owned by a third-party and shared between multiple tenants?",
+      "options": ["A. private", "B. hybrid", "C. public"],
+      "answer": "C. public",
+      "remark": "Microsoft Azure, Amazon Web Services and Google Cloud are three examples of public cloud services.      Microsoft, Amazon and Google own the hardware. The tenants are the customers who use the public cloud services."
+    },
+    {
+      "id": "Question-52",
+      "multi-answer": false,
+      "question": "An Azure web app that queries an on-premises Microsoft SQL server is an example of a _________ cloud",
+      "options": ["hybrid", "multi-vendor", "private", "public"],
+      "answer": "hybrid",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-hybrid-cloud-computing/"
+    },
+    {
+      "id": "Question-53",
+      "multi-answer": false,
+      "question": "You have 1,000 virtual machines hosted on the Hyper-V hosts in a data center.      You plan to migrate all the virtual machines to an Azure pay-as-you-go subscription.      You need to identify which expenditure model to use for the planned Azure solution.      Which expenditure model should you identify?",
+      "options": ["A. operational", "B. elastic", "C. capital", "D. scalable"],
+      "answer": "A. operational",
+      "remark": "One of the major changes that you will face when you move from on-premises cloud to the public cloud is the switch from capital expenditure (buying hardware) to operating expenditure (paying for service as you use it). This switch also requires more careful management of your costs. The benefit of the cloud is that you can fundamentally and positively affect the cost of a service you use by merely shutting down or resizing it when it's not needed.",
+      "reference": "https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/appendix/azure-scaffold"
+    },
+    {
+      "id": "Question-54a",
+      "multi-answer": false,
+      "question": "A cloud service that remains availible after a failure occurs",
+      "options": [
+        "Disaster recovery",
+        "Fault tolerance",
+        "Low latency",
+        "Dynamic scalability"
+      ],
+      "answer": "Fault tolerance",
+      "remark": "Fault tolerance is the ability of a service to remain available after a failure of one of the components of the service. For example, a service running on multiple servers can withstand the failure of one of the servers.",
+      "reference": "https://msdn.microsoft.com/en-us/magazine/mt422582.aspx"
+    },
+    {
+      "id": "Question-54b",
+      "multi-answer": false,
+      "question": "A cloud service that can be recovered after a failure occurs",
+      "options": [
+        "Disaster recovery",
+        "Fault tolerance",
+        "Low latency",
+        "Dynamic scalability"
+      ],
+      "answer": "Disaster recovery",
+      "remark": "Disaster recovery is the recovery of a service after a failure. For example, restoring a virtual machine from backup after a virtual machine failure.",
+      "reference": "https://searchdisasterrecovery.techtarget.com/definition/cloud-disaster-recovery-cloud-DR"
+    },
+    {
+      "id": "Question-54c",
+      "multi-answer": false,
+      "question": "A cloud service that performs quickly when demand increases",
+      "options": [
+        "Disaster recovery",
+        "Fault tolerance",
+        "Low latency",
+        "Dynamic scalability"
+      ],
+      "answer": "Dynamic scalability",
+      "remark": "Dynamic scalability is the ability for compute resources to be added to a service when the service is under heavy load. For example, in a virtual machine scale set, additional instances of the virtual machine are added when the existing virtual machines are under heavy load.",
+      "reference": "http://www.siasmsp.com/the-benefit-of-scalability-in-cloud-computing-2/"
+    },
+    {
+      "id": "Question-54d",
+      "multi-answer": false,
+      "question": "A cloud service that can be accessed quicly from the internet",
+      "options": [
+        "Disaster recovery",
+        "Fault tolerance",
+        "Low latency",
+        "Dynamic scalability"
+      ],
+      "answer": "Low latency",
+      "remark": "Latency is the time a service to respond to requests. For example, the time it takes for a web page to be returned from a web server. Low latency means low response time which means a quicker response.",
+      "reference": "https://azure.microsoft.com/en-us/overview/what-is-cloud-computing/"
+    },
+    {
+      "id": "Question-55",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "To implement a hybrid cloud model, a company must have an internal network",
+        "A company can extend the computing resources of its internal network by using a hybrid cloud.",
+        "In a public cloud model, only guest users at your company can access the resources in the cloud"
+      ],
+      "answer": "A company can extend the capacity of its internal network by using the public cloud",
+      "remark": "Box 1: No -      It is not true that a company must always migrate from an internal network to implement a hybrid cloud. You could start with a public cloud and then combine that with an on-premise infrastructure to implement a hybrid cloud.     Box 2: Yes -      A company can extend the computing resources of its internal network by using the public cloud. This is very common. When you need more resources, rather than pay out for new on-premises infrastructure, you can configure a cloud environment and connect your on-premises network to the cloud environment by using a VPN.      Box 3: No -      It is not true that only guest users can access cloud resources. You can give anyone with an account in Azure Active Directory access to the cloud resources.      There are many authentication scenarios but a common one is to replicate your on-premises Active Directory accounts to Azure Active Directory and provide access to the Azure Active Directory accounts. Another commonly used authentication method is 'Federation' where authentication for access to cloud resources is passed to another authentication provider such as an on-premises Active Directory.",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-hybrid-cloud-computing/"
+    },
+    {
+      "id": "Question-56",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "PaaS solution provides full control of operating systems that host applications.",
+        "A PaaS solution provides additional memory to apps by changing pricing tiers",
+        "A PaaS solution can automatically scale the number of instances."
+      ],
+      "answer": [
+        "A PaaS solution can automatically scale the number of instances.",
+        "A PaaS solution provides additional memory to apps by changing pricing tiers"
+      ],
+      "remark": "NEED CHECKUP!!!"
+    },
+    {
+      "id": "Question-57",
+      "multi-answer": true,
+      "question": "Your company has an on-premises network that contains multiple servers.       The company plans to reduce the following administrative responsibilities:      ✑ Backing up application data      ✑ Replacing failed server hardware      ✑ Managing physical server security      ✑ Updating server operating systems      ✑ Managing permissions to shared documents       The company plans to migrate servers to Azure virtual machines.      You need to identify which administrative responsibilities will be eliminated after the planned migration.      Which two responsibilities should you identify? Each correct answer presents a complete solution.",
+      "options": [
+        "A. Replacing failed server hardware",
+        "B. Backing up application data",
+        "C. Managing physical server security",
+        "D. Updating server operating systems",
+        "E. Managing permissions to shared documents"
+      ],
+      "answer": [
+        "A. Replacing failed server hardware",
+        "C. Managing physical server security"
+      ],
+      "remark": "Azure virtual machines run on Hyper-V physical servers. The physical servers are owned and managed by Microsoft. As an Azure customer, you have no access to the physical servers. Microsoft manage the replacement of failed server hardware and the security of the physical servers so you don't need to.      Incorrect Answers:      B: Microsoft have no control over the applications you run on the virtual machines. Therefore, it is your responsibility to ensure that application data is backed up.      D: Microsoft do not manage the operating systems you run on the virtual machines. Therefore, it is your responsibility to ensure that the operating systems are updated.      E: Microsoft have no control over the shared folders you host on the virtual machines. Therefore, it is your responsibility to ensure that folder permissions are configured appropriately."
+    },
+    {
+      "id": "Question-58",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "Azure pay-as-you-go pricing is an example of CapEx",
+        "Paying electricity for your datacenter is an example of OpEx",
+        "Deploying your own datacenter is an example of CapEx."
+      ],
+      "answer": "Deploying your own datacenter is an example of CapEx.",
+      "remark": "One of the major changes that you will face when you move from on-premises cloud to the public cloud is the switch from capital expenditure (buying hardware) to operating expenditure (paying for service as you use it).      Box 1: No -     With the pay-as-go model, you pay for services as you use them. This is Opex (Operational Expenditure), not CapEx (Captial Expenditure). CapEx is where you pay for something upfront. For example, buying a new physical server.     Box 2: No -    Paying for electricity for your own datacenter will be classed as CapEx, not OpEx.      Box 3: Yes -      Deploying your own datacenter is an example of CapEx. This is because you need to purchase all the infrastructure upfront before you can use it.",
+      "reference": "https://docs.microsoft.com/en-us/azure/architecture/cloud-adoption/appendix/azure-scaffold"
+    },
+    {
+      "id": "Question-59",
+      "multi-answer": false,
+      "question": "You plan to provision Infrastructure as a Service (IaaS) resources in Azure.      Which resource is an example of IaaS?.",
+      "options": [
+        "A. an Azure web app",
+        "B. an Azure virtual machine",
+        "C. an Azure logic app",
+        "D. an Azure SQL database"
+      ],
+      "answer": "B. an Azure virtual machine",
+      "remark": "An Azure virtual machine is an example of Infrastructure as a Service (IaaS).      Azure web app, Azure logic app and Azure SQL database are all examples of Platform as a Service (Paas).",
+      "reference": [
+        "https://azure.microsoft.com/en-gb/overview/what-is-iaas/",
+        "https://azure.microsoft.com/en-gb/overview/what-is-paas/"
+      ]
+    },
+    {
+      "id": "Question-60",
+      "multi-answer": false,
+      "question": "To which cloud models can you deploy physical servers?",
+      "options": [
+        "A. private cloud and hybrid cloud only",
+        "B. private cloud only",
+        "C. private cloud, hybrid cloud and public cloud",
+        "D. hybrid cloud only"
+      ],
+      "answer": "A. private cloud and hybrid cloud only",
+      "remark": "A private cloud is on-premises so you can deploy physical servers.      A hybrid cloud is a mix of on-premise and public cloud resources. You can deploy physical servers on-premises.",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-hybrid-cloud-computing/"
+    },
+    {
+      "id": "Question-61a",
+      "multi-answer": false,
+      "question": "___________ no required CapEx.",
+      "options": ["Hybrid cloud", "Private cloud", "Public cloud"],
+      "answer": "Public cloud",
+      "remark": "Public Cloud -       With a public cloud, there is no capital expenditure on server hardware etc. You only pay for cloud resources that you use as you use them."
+    },
+    {
+      "id": "Question-61b",
+      "multi-answer": false,
+      "question": "___________ Provides complete control over security",
+      "options": ["Hybrid cloud", "Private cloud", "Public cloud"],
+      "answer": "Private cloud",
+      "remark": "Private Cloud -      A private cloud exists on premises, so you have complete control over security."
+    },
+    {
+      "id": "Question-61c",
+      "multi-answer": false,
+      "question": "___________ Provides a choice to use on-prmises or cloud-based resources.",
+      "options": ["Hybrid cloud", "Private cloud", "Public cloud"],
+      "answer": "Hybrid cloud",
+      "remark": "Hybrid Cloud -      A hybrid cloud is a mix of public cloud resources and on-premises resources. Therefore, you have a choice to use either."
+    },
+    {
+      "id": "Question-62",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "A company can extend a private cloud by adding its own physical servers to the public cloud",
+        "To build a hybrid cloud, you must deploy resources to the public cloud.",
+        "A private cloud must be disconnected from the internet"
+      ],
+      "answer": "To build a hybrid cloud, you must deploy resources to the public cloud.",
+      "remark": "Box 1: No -      You cannot add physical servers to the public cloud. You can only deploy virtual servers in the public cloud. You can extend a private cloud by deploying virtual servers in a public cloud. This would create a hybrid cloud.      Box 2: Yes -      A hybrid cloud is a combination of a private cloud and public cloud. Therefore, to create a hybrid cloud, you must deploy resources to a public cloud.      Box 3: No.      It is not true that a private cloud must be disconnected from the Internet. Private clouds can be and most commonly are connected to the Internet. ג€Private cloudג€ means that the physical servers are managed by you. It does not mean that it is disconnected from the Internet.",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-are-private-public-hybrid-clouds/"
+    },
+    {
+      "id": "Question-63",
+      "multi-answer": false,
+      "question": "You have 50 virtual machines hosted on-premises and 50 virtual machines hosted in Azure. The on-premises virtual machines and the Azure virtual machines connect to each other.      Which type of cloud model is this?",
+      "options": ["A. hybrid", "B. private", "C. public"],
+      "answer": "A. hybrid",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-hybrid-cloud-computing/"
+    },
+    {
+      "id": "Question-64",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "A PaaS solution that hosts web app in Azure provides full control of the operating system that host applications",
+        "A PaaS solution that hosts web apps in Azure can be provided with additional memory by changing the pricing tier",
+        "A PaaS solution that hosts web apps in Azure can be configured to automatically scale the number of instances based on demand."
+      ],
+      "answer": [
+        "A PaaS solution that hosts web apps in Azure can be provided with additional memory by changing the pricing tier",
+        "A PaaS solution that hosts web apps in Azure can be configured to automatically scale the number of instances based on demand."
+      ],
+      "remark": "Box 1: No -       A PaaS solution does not provide access to the operating system. The Azure Web Apps service provides an environment for you to host your web applications.       Behind the scenes, the web apps are hosted on virtual machines running IIS. However, you have no direct access to the virtual machine, the operating system or       IIS.      Box 2: Yes -  Box 3: Yes -       A PaaS solution that hosts web apps in Azure does provide the ability to scale the platform automatically. This is known as autoscaling. Behind the scenes, the web apps are hosted on virtual machines running IIS. Autoscaling means adding more load balanced virtual machines to host the web apps. NEED CHECKUP!!!! ",
+      "reference": "https://azure.microsoft.com/en-gb/overview/what-is-paas/"
+    },
+    {
+      "id": "Question-65",
+      "multi-answer": false,
+      "question": "Your company plans to migrate all its data and resources to Azure.      The company's migration plan states that only Platform as a Service (PaaS) solutions must be used in Azure.      You need to deploy an Azure environment that meets the company migration plan.      Solution: You create Azure virtual machines, Azure SQL databases, and Azure Storage accounts.      Does this meet the goal?",
+      "options": ["Yes", "No"],
+      "answer": "No",
+      "remark": "Platform as a service (PaaS) is a complete development and deployment environment in the cloud. PaaS includes infrastructure servers, storage, and networking, but also middleware, development tools, business intelligence (BI) services, database management systems, and more. PaaS is designed to support the complete web application lifecycle: building, testing, deploying, managing, and updating.      However, virtual machines are examples of Infrastructure as a service (IaaS). IaaS is an instant computing infrastructure, provisioned and managed over the internet.",
+      "reference": [
+        "https://azure.microsoft.com/en-us/overview/what-is-paas/",
+        "https://azure.microsoft.com/en-us/overview/what-is-iaas/"
+      ]
+    },
+    {
+      "id": "Question-66",
+      "multi-answer": false,
+      "question": "Your company plans to deploy several custom applications to Azure. The applications will provide invoicing services to the customers of the company. Each application will have several prerequisite applications and services installed.       You need to recommend a cloud deployment solution for all the applications.      What should you recommend?",
+      "options": [
+        "A. Software as a Service (SaaS)",
+        "B. Platform as a Service (PaaS)",
+        "C. Infrastructure as a Service (laaS)"
+      ],
+      "answer": "C. Infrastructure as a Service (laaS)",
+      "remark": "Infrastructure as a service (IaaS) is an instant computing infrastructure, provisioned and managed over the internet. The IaaS service provider manages the infrastructure, while you purchase, install, configure, and manage your own software       Incorrect Answers:       A: Software as a service (SaaS) allows users to connect to and use cloud-based apps over the Internet. Common examples are email, calendaring, and office tools. In this scenario, you need to run your own apps, and therefore require an infrastructure.       B:       Platform as a service (PaaS) is a complete development and deployment environment in the cloud. PaaS includes infrastructureג: ervers, storage, and networkingג, but also middleware, development tools, business intelligence (BI) services, database management systems, and more. PaaS is designed to support the complete web application lifecycle: building, testing, deploying, managing, and updating.",
+      "reference": [
+        "https://azure.microsoft.com/en-us/overview/what-is-paas/",
+        "https://azure.microsoft.com/en-us/overview/what-is-iaas/",
+        "https://azure.microsoft.com/en-us/overview/what-is-saas/"
+      ]
+    },
+    {
+      "id": "Question-67",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "Building a datacenter infrastructure is an example of OpEx costs.",
+        "Monthly salaries for technical personnel are example of OpEx",
+        "Leasing software is example of OpEx"
+      ],
+      "answer": [
+        "Monthly salaries for technical personnel are example of OpEx",
+        "Leasing software is example of OpEx"
+      ],
+      "remark": "Box 1: No -      Building a data center infrastructure is capital expenditure, not operation expenditure.      Box 2: Yes -      OpEx is ongoing costs (costs of operations) such as staff salaries.      Box 2: Yes -      OpEx is ongoing costs (costs of operations) such as leasing software. If you purchased software as a one-off purchase, that would be CapEx, but leasing software is ongoing so it's OpEx."
+    },
+    {
+      "id": "Question-68",
+      "multi-answer": false,
+      "question": "Azure CosmosDB is an example of a _______ offering.",
+      "options": ["PaaS", "IaaS", "serverless", "SaaS"],
+      "answer": "PaaS",
+      "remark": "Azure Cosmos DB is an example of a platform as a service (PaaS) cloud database provider.",
+      "reference": "https://docs.microsoft.com/en-us/azure/cosmos-db/database-security"
+    },
+    {
+      "id": "Question-69",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "With SaaS, you must apply software updates.",
+        "With Iaas, you must install the software you want to use.",
+        "Azure Backup is an example of PaaS."
+      ],
+      "answer": [
+        "With Iaas, you must install the software you want to use.",
+        "Azure Backup is an example of PaaS."
+      ],
+      "reference": [
+        "https://azure.microsoft.com/en-us/overview/what-is-paas/",
+        "https://azure.microsoft.com/en-us/overview/what-is-iaas/",
+        "https://azure.microsoft.com/en-us/overview/what-is-saas/"
+      ]
+    },
+    {
+      "id": "Question-70",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "You can create a resource group inside of another resource group.",
+        "An Azure VM can be in multiple resource groups",
+        "A resource group can contain resources from multiple Azure regions."
+      ],
+      "answer": "A resource group can contain resources from multiple Azure regions.",
+      "reference": [
+        "https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview",
+        "https://www.codeisahighway.com/effective-ways-to-delete-resources-in-a-resource-group-on-azure/"
+      ],
+      "remark":"Box 1: No -     Box 2: No -      Each resource can exist in only one resource group.      Box 3: Yes -       Resources from multiple different regions can be placed in a resource group. The resource group only contains metadata about the resources it contains."
+    }
+  ]
+}

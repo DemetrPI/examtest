@@ -1,0 +1,83 @@
+{
+  "quiz": [
+    {
+      "id":"Question-1",
+      "multi-answer": true,
+      "question": "Your company intends to subscribe to an Azure support plan. The support plan must allow for new support requests to be opened. Which of the following are support plans that will allow this?",
+      "options": [
+        "Basic",
+        "Developer",
+        "Standard",
+        "Prof.direct",
+        "Premier"
+      ],
+      "answer": [
+        "Developer",
+        "Standard",
+        "Prof.direct",
+        "Premier"
+      ]
+    },
+    {
+      "id":"Question-2",
+      "multi-answer": false,
+      "question": "Your company has datacenters in Los Angeles and New York. The company has a Microsoft Azure subscription.       You are configuring the two datacenters as geo-clustered sites for site resiliency.       You need to recommend an Azure storage redundancy option.      You have the following data storage requirements:      ✑ Data must be stored on multiple nodes.      ✑ Data must be stored on nodes in separate geographic locations.      ✑ Data can be read from the secondary location as well as from the primary location       Which of the following Azure stored redundancy options should you recommend?",
+      "options": [
+        "A. Geo-redundant storage",
+        "B. Read-only geo-redundant storage",
+        "C. Zone-redundant storage",
+        "D. Locally redundant storage"
+      ],
+      "answer": [
+        "B. Read-only geo-redundant storage"
+      ],
+      "reference": "https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage",
+      "remark": "RA-GRS allows you to have higher read availability for your storage account by providing ג€read onlyג€ access to the data replicated to the secondary location. Once you enable this feature, the secondary location may be used to achieve higher availability in the event the data is not available in the primary region. This is an optional feature which requires the storage account be geo-replicated."
+    },
+    {
+      "id":"Question-3",
+      "multi-answer": false,
+      "question": "Your company's Azure subscription includes a Basic support plan. They would like to request an assessment of an Azure environment's design from Microsoft. This is, however, not supported by the existing plan. You want to make sure that the company subscribes to a support plan that allows this functionality, while keeping expenses to a minimum. Solution: You recommend that the company subscribes to the Professional Direct support plan. Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "reference": "https://azure.microsoft.com/en-gb/support/plans/"
+    },
+    {
+      "id":"Question-4",
+      "multi-answer": false,
+      "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Software as a Service (SaaS). Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "id":"Question-5",
+      "multi-answer": false,
+      "question": "You are tasked with deploying Azure virtual machines for your company. You need to make use of the appropriate cloud deployment solution. Solution: You should make use of Platform as a Service (PaaS). Does the solution meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No"
+    },
+    {
+      "id":"Question-34",
+      "multi-answer": true,
+      "question": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "options": [
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides full control of the operating systes that hosts applications.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides the ability to scale the platform automatically.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides professional development services to continuosly add features to custom applications."
+      ],
+      "answer": [
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides the ability to scale the platform automatically.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides professional development services to continuosly add features to custom applications."
+      ]
+    }
+  ]
+}
