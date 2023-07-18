@@ -54,13 +54,13 @@ const Quiz = () => {
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
     // setAttemptedToLeave(false);
-    setQuestions(shuffledQuestions.slice(0, 1));
+    setQuestions(shuffledQuestions.slice(0, 3));
   };
 
   // Use the questions data directly
   useEffect(() => {
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 1));
+    setQuestions(shuffledQuestions.slice(0, 3));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 
@@ -208,10 +208,12 @@ const Quiz = () => {
     const remainingQuestions = questions.filter(
       (question) => question !== currentQuestion
     );
-    const newQuestions = [...remainingQuestions, currentQuestion];
+    const newQuestions = [...remainingQuestions];
+    newQuestions.push(currentQuestion);
     setQuestions(newQuestions);
     setCurrentQuestion(newQuestions[0]);
   };
+  
 
   // Timer pause function
   const handlePauseResume = () => {
