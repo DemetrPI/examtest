@@ -370,6 +370,20 @@
         "No"
       ],
       "answer": "No"
+    },
+    {
+      "id":"question34",
+      "multi-answer": true,
+      "question": "For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "options": [
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides full control of the operating systes that hosts applications.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides the ability to scale the platform automatically.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides professional development services to continuosly add features to custom applications."
+      ],
+      "answer": [
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides the ability to scale the platform automatically.",
+        "A platform as a service (PAAS) solution that hosts web apps in Azure provides professional development services to continuosly add features to custom applications."
+      ]
     }
   ]
 }

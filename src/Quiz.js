@@ -25,7 +25,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 60);
+  const [timeLeft, setTimeLeft] = useState(1 * 10);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -45,7 +45,7 @@ const Quiz = () => {
     setScore(null);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(1 * 60);
+    setTimeLeft(1 * 10);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(null);
@@ -54,13 +54,13 @@ const Quiz = () => {
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
     // setAttemptedToLeave(false);
-    setQuestions(shuffledQuestions.slice(0, 5));
+    setQuestions(shuffledQuestions.slice(0, 1));
   };
 
   // Use the questions data directly
   useEffect(() => {
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 5));
+    setQuestions(shuffledQuestions.slice(0, 1));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 
@@ -113,13 +113,26 @@ const Quiz = () => {
   
     let questionScore = 0;
     if (currentQuestion["multi-answer"]) {
-      const correctAnswers = currentQuestion.answer;
-      const correctSelected = selectedOptions.filter((option) =>
-        correctAnswers.includes(option)
+      const totalAnswers = currentQuestion.options.length;
+      const totalCorrectAnswers = currentQuestion.answer.length;
+      const selectedCorrectAnswers = selectedOptions.filter((option) =>
+        currentQuestion.answer.includes(option)
       );
-      questionScore = parseFloat(
-        ((10 / correctAnswers.length) * correctSelected.length).toFixed(2)
+      const selectedWrongAnswers = selectedOptions.filter((option) =>
+        !currentQuestion.answer.includes(option)
       );
+  
+      if (
+        selectedCorrectAnswers.length === totalCorrectAnswers &&
+        selectedWrongAnswers.length === 0
+      ) {
+        // Perfect score if all correct answers are selected and no wrong answers
+        questionScore = 10;
+      } else {
+        // Partial score based on the proportion of selected correct answers to the total number of answers
+        const proportion = selectedCorrectAnswers.length / totalAnswers;
+        questionScore = parseFloat((proportion * 10).toFixed(2));
+      }
     } else {
       if (selectedOptions[0] === currentQuestion.answer) {
         questionScore = 10;
@@ -145,6 +158,8 @@ const Quiz = () => {
     };
     setUserAnswers([...userAnswers, answer]);
   };
+  
+  
   
   
   //handle finish function
