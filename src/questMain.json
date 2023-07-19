@@ -406,7 +406,7 @@
       "multi-answer": false,
       "question": "When you are implementing a Software as a Service (SaaS) solution, you are responsible for _______",
       "options": [
-        "configuring high availability",
+        "configuring High availability",
         "defining scalability rules",
         "installing th SaaS solution",
         "configuring the SaaS solution"
@@ -421,10 +421,10 @@
     {
       "id": "Question-37",
       "multi-answer": false,
-      "question": "You have an on-premises network that contains several servers.     You plan to migrate all the servers to Azure.     You need to recommend a solution to ensure that some of the servers are available if a single Azure data center goes offline for an extended period.     What should you include in the recommendation?   A. fault tolerance    B. elasticity     C. scalability     D. low latency",
+      "question": "You have an on-premises network that contains several servers.     You plan to migrate all the servers to Azure.     You need to recommend a solution to ensure that some of the servers are available if a single Azure data center goes offline for an extended period.     What should you include in the recommendation?   A. fault tolerance    B. Elasticity     C. scalability     D. low latency",
       "options": [
         "A. fault tolerance",
-        "B. elasticity",
+        "B. Elasticity",
         "C. scalability",
         "D. low latency"
       ],
@@ -517,13 +517,13 @@
       "multi-answer": false,
       "question": "Your company hosts an accounting application named App1 that is used by all the customers of the company.    App1 has low usage during the first three weeks of each month and very high usage during the last week of each month.    Which benefit of Azure Cloud Services supports cost management for this type of usage pattern?",
       "options": [
-        "A. high availability",
+        "A. High availability",
         "B. high latency",
-        "C. elasticity",
+        "C. Elasticity",
         "D. load balancing"
       ],
-      "answer": "C. elasticity",
-      "remark": "Elasticity in this case is the ability to provide additional compute resource when needed and reduce the compute resource when not needed to reduce costs.    Autoscaling is an example of elasticity.     Elastic computing is the ability to quickly expand or decrease computer processing, memory and storage resources to meet changing demands without worrying about capacity planning and engineering for peak usage. Typically controlled by system monitoring tools, elastic computing matches the amount of resources allocated to the amount of resources actually needed without disrupting operations. With cloud elasticity, a company avoids paying for unused capacity or idle resources and doesn't have to worry about investing in the purchase or maintenance of additional resources and equipment.",
+      "answer": "C. Elasticity",
+      "remark": "Elasticity in this case is the ability to provide additional compute resource when needed and reduce the compute resource when not needed to reduce costs.    Autoscaling is an example of Elasticity.     Elastic computing is the ability to quickly expand or decrease computer processing, memory and storage resources to meet changing demands without worrying about capacity planning and engineering for peak usage. Typically controlled by system monitoring tools, elastic computing matches the amount of resources allocated to the amount of resources actually needed without disrupting operations. With cloud Elasticity, a company avoids paying for unused capacity or idle resources and doesn't have to worry about investing in the purchase or maintenance of additional resources and equipment.",
       "reference": "https://azure.microsoft.com/en-gb/overview/what-is-elastic-computing/"
     },
     {
@@ -613,8 +613,8 @@
       "options": [
         "fault tolerance",
         "disaster recovery",
-        "elasticity",
-        "high availability"
+        "Elasticity",
+        "High availability"
       ],
       "answer": "fault tolerance",
       "remark": "Azure Site Recovery helps ensure business continuity by keeping business apps and workloads running during outages. Site Recovery replicates workloads running on physical and virtual machines (VMs) from a primary site to a secondary location.",
@@ -1155,8 +1155,8 @@
       "options": [
         "fault tolerance",
         "disaster recovery",
-        "elasticity",
-        "high availability"
+        "Elasticity",
+        "High availability"
       ],
       "answer": "disaster recovery",
       "reference": "https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication",
@@ -1206,7 +1206,7 @@
       "multi-answer": false,
       "question": "When you are implementing a SaaS solution, you are responcible for ___",
       "options": [
-        "configuring high availability",
+        "configuring High availability",
         "defining scalability rules",
         "installing th SaaS solution",
         "configuring the SaaS solution"
@@ -1262,13 +1262,13 @@
       "question": "Autoscaling is an example of _____",
       "options": [
         "Agility",
-        "elasticity",
+        "Elasticity",
         "Geo-distribution",
         "predictability"
       ],
-      "answer": "elasticity",
-      "reference": "https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview https://www.netreo.com/cloud-automation/what-is-azure-elasticity-as-a-service/",
-      "remark": "An Azure virtual machine scale set can automatically increase or decrease the number of VM instances that run your application. This automated and elastic behavior reduces the management overhead to monitor and optimize the performance of your application.       Also: Azure elasticity as a service is referred to a cloud service that enables in automatically scaling Azure hosted resources in par with the demand and configured parameters. It provides Azure Administrators with the ability to auto scale Azure infrastructure and resources as and when needed."
+      "answer": "Elasticity",
+      "reference": "https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview https://www.netreo.com/cloud-automation/what-is-azure-Elasticity-as-a-service/",
+      "remark": "An Azure virtual machine scale set can automatically increase or decrease the number of VM instances that run your application. This automated and elastic behavior reduces the management overhead to monitor and optimize the performance of your application.       Also: Azure Elasticity as a service is referred to a cloud service that enables in automatically scaling Azure hosted resources in par with the demand and configured parameters. It provides Azure Administrators with the ability to auto scale Azure infrastructure and resources as and when needed."
     },
     {
       "id": "Question-89",
@@ -1276,11 +1276,11 @@
       "question": "For each of the following statements, select it, if the statement is true.",
       "options": [
         "Azure virtual network deployed to the same Azure region are connected by default.",
-        "Each Azure virtua network in a single resource group must have a unique nape.",
+        "Each Azure virtua network in a single resource group must have a unique name.",
         "The Azure virtual network address space must be unique within a subscription."
       ],
       "answer": [
-        "Each Azure virtua network in a single resource group must have a unique nape.",
+        "Each Azure virtua network in a single resource group must have a unique name.",
         "The Azure virtual network address space must be unique within a subscription."
       ],
       "remark": "Box 1: No -     You would need to setup the VNET connections, for example with peering.     Note: You can connect virtual networks to each other with virtual network peering. These virtual networks can be in the same region or different regions (also known as Global VNet peering). Once virtual networks are peered, resources in both virtual networks can communicate with each other.       Box 2: Yes -     All Azure resource types have a scope that defines the level that resource names must be unique. A resource must have a unique name within its scope.      For example, a virtual network has a resource group scope, which means that there can be only one network named vnet-prod-westus-001 in a given resource group.     Box 3: Yes -      As you build your network in Azure, it is important to keep in mind the following universal design principles:      Ensure non-overlapping address spaces. Make sure your VNet address space (CIDR block) does not overlap with your organization's other network ranges.",
@@ -1297,11 +1297,329 @@
         "A. agility",
         "B. vertical scaling",
         "C. horizontal scaling",
-        "D. elasticity"
+        "D. Elasticity"
       ],
       "answer": "B. vertical scaling",
       "reference": "https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-vertical-scale-reprovision",
       "remark": "Vertical scaling, also known as scale up and scale down, means increasing or decreasing virtual machine (VM) sizes in response to a workload. Compare this behavior with horizontal scaling, also referred to as scale out and scale in, where the number of VMs is altered depending on the workload."
+    },
+    {
+      "id": "Question-91",
+      "multi-answer": true,
+      "question": "What are two benefits of cloud computing? Each correct answer presents a complete solution.       NOTE: Each correct selection is worth one point.",
+      "options": [
+        "A. enables the rapid provisioning of resources",
+        "B. has increased administrative complexity",
+        "C. has the same configuration options as on-premises",
+        "D. shifts capital expenditures (CAPEX) to operating expenditures (OPEX)"
+      ],
+      "answer": [
+        "A. enables the rapid provisioning of resources",
+        "D. shifts capital expenditures (CAPEX) to operating expenditures (OPEX)"
+      ],
+      "remark": "Azure allows you to build, deploy, and manage apps more quickly and easily without having to buy and/or maintain the underlying infrastructure.      Azure provides flexibility between CapEx and OpEx       Capital expenditures generate benefits over a long period. These expenditures are generally nonrecurring and result in the acquisition of permanent assets.      Building an application could qualify as a capital expenditure. Example, Azure Reserved Instances (Azure RI) help Azure's most active customers save on long- term VM usage reserving VMs in advance at a discounted price by committing to a one or three-year benefits.      Operating expenditures are ongoing costs of doing business. Consuming cloud services in a pay-as-you-go model could qualify as an operating expenditure.      Example, you pay for a service or product as you use it i.e. pay-as-you-go pricing.",
+      "reference": "https://www.protechtraining.com/blog/post/top-5-benefits-of-microsoft-azure-for-business-934 https://www.azureguru.org/capex-vs-opex/#"
+    },
+    {
+      "id": "Question-92",
+      "multi-answer": false,
+      "question": "What is a feature of an Azure virtual network?",
+      "options": [
+        "A. resource cost analysis",
+        "B. packet inspection",
+        "C. geo-redundancy",
+        "D. isolation and segmentation"
+      ],
+      "answer": "D. isolation and segmentation",
+      "reference": "https://docs.microsoft.com/en-us/azure/architecture/framework/security/design-network-segmentation",
+      "remark": "Implement network segmentation patterns on Azure.       A unified enterprise segmentation strategy guides technical teams to consistently segment access using networking, applications, identity, and any other access controls. Create segmentation in your network footprint by defining perimeters.       The main reasons for segmentation are:       The ability to group related assets that are a part of (or support) workload operations.       Isolation of resources.      Governance policies set by the organization."
+    },
+    {
+      "id": "Question-93",
+      "multi-answer": false,
+      "question": "______enables Azure resources to be deployed close to users",
+      "options": [
+        "Elasticity",
+        "Geo-distribution",
+        "High availability",
+        "Scalability"
+      ],
+      "answer": "Geo-distribution",
+      "reference": "https://docs.microsoft.com/learn/modules/fundamental-azure-concepts/benefits-of-cloud-computing",
+      "remark": "Because of geo-distribution you can deploy apps and data to regional datacenters around the globe, thereby ensuring that your customers always have the best performance in their region."
+    },
+    {
+      "id": "Question-94a",
+      "multi-answer": false,
+      "question": "Benefit increasing the compute capasity of apps in the cloud is_________",
+      "options": [
+        "Disaster recovery",
+        "Geo-distribution",
+        "High availability",
+        "Scalability"
+      ],
+      "answer": "Scalability",
+      "reference": "https://docs.microsoft.com/learn/modules/fundamental-azure-concepts/benefits-of-cloud-computing"
+    },
+    {
+      "id": "Question-94b",
+      "multi-answer": false,
+      "question": "Benefit providing a continuous user experience with no apparent downtime is_________",
+      "options": [
+        "Disaster recovery",
+        "Geo-distribution",
+        "High availability",
+        "Scalability"
+      ],
+      "answer": "High availability",
+      "reference": "https://docs.microsoft.com/learn/modules/fundamental-azure-concepts/benefits-of-cloud-computing"
+    },
+    {
+      "id": "Question-94c",
+      "multi-answer": false,
+      "question": "Benefit what ensures that users always have the best experience by deploying apps to all the regions where there are users _________",
+      "options": [
+        "Disaster recovery",
+        "Geo-distribution",
+        "High availability",
+        "Scalability"
+      ],
+      "answer": "Geo-distribution",
+      "reference": "https://docs.microsoft.com/learn/modules/fundamental-azure-concepts/benefits-of-cloud-computing"
+    },
+    {
+      "id": "Question-95",
+      "multi-answer": false,
+      "question": "Which cloud computing benefit provides continuous user access to a cloud-based application with minimal downtime?",
+      "options": [
+        "A. agility",
+        "B. scalability",
+        "C. elasticity",
+        "D. high availability"
+      ],
+      "answer": "D. high availability"
+    },
+    {
+      "id": "Question-96",
+      "multi-answer": false,
+      "question": "You need to identify the type of failure for which an Azure Availability Zone can be used to protect access to Azure services.       What should you identify?",
+      "options": [
+        "A. a physical server failure",
+        "B. an Azure region failure",
+        "C. a storage failure",
+        "D. an Azure data center failure"
+      ],
+      "answer": "D. an Azure data center failure",
+      "remark": "Availability zones expand the level of control you have to maintain the availability of the applications and data on your VMs. An Availability Zone is a physically separate zone, within an Azure region. There are three Availability Zones per supported Azure region.       Each Availability Zone has a distinct power source, network, and cooling. By architecting your solutions to use replicated VMs in zones, you can protect your apps and data from the loss of a datacenter. If one zone is compromised, then replicated apps and data are instantly available in another zone.",
+      "reference": "https://docs.microsoft.com/en-us/azure/virtual-machines/availability"
+    },
+    {
+      "id": "Question-97",
+      "multi-answer": true,
+      "question": "You plan to extend your company's network to Azure.       The network contains a VPN appliance that uses an IP address of 131.107.200.1.       You need to create an Azure resource that defines the VPN appliance in Azure.       Which Azure resource should you create?",
+      "options": [
+        "NAT gateways",
+        "Application gateways",
+        "Local network gateway",
+        "Virtual network gateway",
+        "On-premices Data Gateway",
+        "Azure Data Box Gateway",
+        "Azure Stack Edge?Data Box Gateway",
+        "Web Application Firewall policies"
+      ],
+      "answer": "Local network gateway",
+      "remark": "A Local Network Gateway is an object in Azure that represents your on-premise VPN device. A Virtual Network Gateway is the VPN object at the Azure end of the      VPN. A 'connection' is what connects the Local Network Gateway and the Virtual Network Gateway to bring up the VPN.      The local network gateway typically refers to your on-premises location. You give the site a name by which Azure can refer to it, then specify the IP address of the on-premises VPN device to which you will create a connection. You also specify the IP address prefixes that will be routed through the VPN gateway to the VPN device. The address prefixes you specify are the prefixes located on your on-premises network. If your on-premises network changes or you need to change the public IP address for the VPN device, you can easily update the values later.",
+      "reference": "https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal"
+    },
+    {
+      "id": "Question-98",
+      "multi-answer": false,
+      "question": "You plan to deploy several Azure virtual machines.       You need to ensure that the services running on the virtual machines are available if a single data center fails.       Solution: You deploy the virtual machines to two or more resource groups.       Does this meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "remark": "A resource group is a logical container for Azure resources. When you create a resource group, you specify which location to create the resource group in.      However, when you create a virtual machine and place it in the resource group, the virtual machine can still be in a different location (different datacenter).      Therefore, creating multiple resource groups, even if they are in separate datacenters does not ensure that the services running on the virtual machines are available if a single data center fails.",
+      "reference": "https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups"
+    },
+    {
+      "id": "Question-99",
+      "multi-answer": false,
+      "question": "You plan to deploy several Azure virtual machines.       You need to ensure that the services running on the virtual machines are available if a single data center fails.       Solution: You deploy the virtual machines to a scale set.       Does this meet the goal?",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "answer": "No",
+      "remark": "This answer does not specify that the scale set will be configured across multiple data centers so this solution does not meet the goal.       Azure virtual machine scale sets let you create and manage a group of load balanced VMs. The number of VM instances can automatically increase or decrease in response to demand or a defined schedule. Scale sets provide high availability to your applications, and allow you to centrally manage, configure, and update many VMs.       Virtual machines in a scale set can be deployed across multiple update domains and fault domains to maximize availability and resilience to outages due to data center outages, and planned or unplanned maintenance events.",
+      "reference": "https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/availability"
+    },
+    {
+      "id": "Question-100",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "An Azure subscription can be associated to multiple Azure AD tenants",
+        "You can change the Azure AD tenant to which an Azure subscription is associated",
+        "When the Azure subscription expires, the associated Azure AD tenant is deleted automatically."
+      ],
+      "answer": "You can change the Azure AD tenant to which an Azure subscription is associated",
+      "remark": "Box 1: No -      An Azure AD tenant can have multiple subscriptions but an Azure subscription can only be associated with one Azure AD tenant.         Box 2: Yes -     Box 3: No -       If your subscription expires, you lose access to all the other resources associated with the subscription. However, the Azure AD directory remains in Azure. You can associate and manage the directory using a different Azure subscription.",
+      "reference": "https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory"
+    },
+    {
+      "id": "Question-101",
+      "multi-answer": false,
+      "question": "This question requires that you evaluate the underlined text to determine if it is correct.       Resource groups provide organizations with the ability to manage the compliance of Azure resources across multiple subscriptions.       Instructions: Review the underlined text. If it makes the statement correct, select `No change is needed`. If the statement is incorrect, select the answer choice that makes the statement correct.",
+      "options": [
+        "A. No change is needed",
+        "B. Management groups",
+        "C. Azure policies",
+        "D. Azure App Service plans"
+      ],
+      "answer": "C. Azure policies",
+      "remark": "BAzure policies can be used to define requirements for resource properties during deployment and for already existing resources. Azure Policy controls properties such as the types or locations of resources.       Azure Policy is a service in Azure that you use to create, assign, and manage policies. These policies enforce different rules and effects over your resources, so those resources stay compliant with your corporate standards and service level agreements. Azure Policy meets this need by evaluating your resources for non- compliance with assigned policies. All data stored by Azure Policy is encrypted at rest.       For example, you can have a policy to allow only a certain SKU size of virtual machines in your environment. Once this policy is implemented, new and existing resources are evaluated for compliance. With the right type of policy, existing resources can be brought into compliance.",
+      "reference": "hthttps://docs.microsoft.com/en-us/azure/governance/policy/overview"
+    },
+    {
+      "id": "Question-102",
+      "multi-answer": true,
+      "question": "Your company plans to migrate to Azure.       The company has several departments. All the Azure resources used by each department will be managed by a department administrator.      What are two possible techniques to segment Azure for the departments? Each correct answer presents a complete solution.       NOTE: Each correct selection is worth one point.",
+      "options": [
+        "A. multiple subscriptions",
+        "B. multiple Azure Active Directory (Azure AD) directories",
+        "C. multiple regions",
+        "D. multiple resource groups"
+      ],
+      "answer": [
+        "A. multiple subscriptions",
+        "D. multiple resource groups"
+      ],
+      "remark": "An Azure subscription is a container for Azure resources. It is also a boundary for permissions to resources and for billing. You are charged monthly for all resources in a subscription. A single Azure tenant (Azure Active Directory) can contain multiple Azure subscriptions.       A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group.       To enable each department administrator to manage the Azure resources used by that department, you will need to create a separate subscription per department. You can then assign each department administrator as an administrator for the subscription to enable them to manage all resources in that subscription.",
+      "reference": [
+        "https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription",
+        "https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/add-change-subscription-administrator"
+      ]
+    },
+    {
+      "id": "Question-103",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "A single Microsoft account can be used to manage multiple Azure subscriptions.",
+        "Two Azure subscriptions can be merged into a single subscription.",
+        "A company can use resources from multiple subscriptions."
+      ],
+      "answer": [
+        "A single Microsoft account can be used to manage multiple Azure subscriptions.",
+        "A company can use resources from multiple subscriptions."
+      ],
+      "remark": "Box 1: Yes -       You can use the same account to manage multiple subscriptions. You can create an additional subscription for your account in the Azure portal. You may want an additional subscription to avoid hitting subscription limits, to create separate environments for security, or to isolate data for compliance reasons.     Box 2: No -       You cannot merge two subscriptions into a single subscription. However, you can move some Azure resources from one subscription to another. You can also transfer ownership of a subscription and change the billing type for a subscription.      Box 3: Yes -     A company can have multiple subscriptions and store resources in the different subscriptions. However, a resource instance can exist in only one subscription.",
+      "reference": "https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription"
+    },
+    {
+      "id": "Question-104",
+      "multi-answer": false,
+      "question": "To complete the sentence, select the appropriate option: You have several VMs in an Azure subscription. You create a new subscription.",
+      "options": [
+        "The VMs cannot be moved to the new subscription.",
+        "The VMs can be moved to the new subscription.",
+        "The VMs can be moved to the new subscription only if they are all in the same resource group.",
+        "The VMs can be moved to the new subscription only if they run Win Serv 2016"
+      ],
+      "answer": "The VMs can be moved to the new subscription.",
+      "remark": "You can move a VM and its associated resources to a different subscription by using the Azure portal.        Moving between subscriptions can be handy if you originally created a VM in a personal subscription and now want to move it to your company's subscription to continue your work. You do not need to start the VM in order to move it and it should continue to run during the move.",
+      "reference": "https://docs.microsoft.com/en-us/azure/virtual-machines/windows/move-vm"
+    },
+    {
+      "id": "Question-105",
+      "multi-answer": true,
+      "question": "You have an Azure environment that contains multiple Azure virtual machines.       You plan to implement a solution that enables the client computers on your on-premises network to communicate to the Azure virtual machines.      You need to recommend which Azure resources must be created for the planned solution.      Which two Azure resources should you include in the recommendation? Each correct answer presents part of the solution.",
+      "options": [
+        "A. a virtual network gateway",
+        "B. a load balancer",
+        "C. an application gateway",
+        "D. a virtual network",
+        "E. a gateway subnet"
+      ],
+      "answer": [
+        "A. a virtual network gateway",
+        "E. a gateway subnet"
+      ],
+      "remark": "To implement a solution that enables the client computers on your on-premises network to communicate to the Azure virtual machines, you need to configure a      VPN (Virtual Private Network) to connect the on-premises network to the Azure virtual network.      The Azure VPN device is known as a Virtual Network Gateway. The virtual network gateway needs to be located in a dedicated subnet in the Azure virtual network. This dedicated subnet is known as a gateway subnet and must be named 'GatewaySubnet'.      Note: a virtual network (answer D) is also required. However, as we already have virtual machines deployed in a Azure, we can assume that the virtual network is already in place.",
+      "reference": "https://docs.microsoft.com/en-us/office365/enterprise/connect-an-on-premises-network-to-a-microsoft-azure-virtual-network"
+    },
+    {
+      "id": "Question-106",
+      "multi-answer": false,
+      "question": "You attempt to create several managed Microsoft SQL Server instances in an Azure environment and receive a message that you must increase your Azure subscription limits.       What should you do to increase the limits?",
+      "options": [
+        "A. Create a service health alert",
+        "B. Upgrade your support plan",
+        "C. Modify an Azure policy",
+        "D. Create a new support request"
+      ],
+      "answer": "D. Create a new support request",
+      "remark": "Many Azure resource have quote limits. The purpose of the quota limits is to help you control your Azure costs. However, it is common to require an increase to the default quota.       You can request a quota limit increase by opening a support request. In the support request, select 'Service and subscription limits (quotas)' for the Issue type, select your subscription and the service you want to increase the quota for. For this question, you would select 'SQL Database Managed Instance' as the quote type.",
+      "reference": "https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#obtaining-a-larger-quota-for-sql-managed-instance"
+    },
+    {
+      "id": "Question-107",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "Each Azure subscription can not contain multiple account administrators.",
+        "Each Azure subscription can not be managed by using a Microsoft account only.",
+        "An Azure resource group contains multiple Azure subscriptions."
+      ],
+      "answer": [
+        "Each Azure subscription can not contain multiple account administrators.",
+        "Each Azure subscription can not be managed by using a Microsoft account only."
+      ],
+      "remark": "Box 1: Yes -       You can assign service administrators and co-administrators in the Azure Portal but there can only be one account administrator.      Box 2: Yes -      You need an Azure Active Directory account to manage a subscription, not a Microsoft account.      An account is created in the Azure Active Directory when you create the subscription. Further accounts can be created in the Azure Active Directory to manage the subscription.      Box 3: No -       Resource groups are logical containers for Azure resources. However, resource groups do not contain subscriptions. Subscriptions contain resource groups.",
+      "reference": "https://docs.microsoft.com/en-us/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings"
+    },
+    {
+      "id": "Question-108",
+      "multi-answer": true,
+      "question": "For each of the following statements, select it, if the statement is true.",
+      "options": [
+        "Availability zones can not be implemented in all Azure regions.",
+        "Only VMs that run Win Server can be created in availability zones.",
+        "Availability zones are used to replicate data and applications to multiple regions."
+      ],
+      "answer": "Availability zones can not be implemented in all Azure regions.",
+      "remark": "Box 1: Yes -       Not all Azure regions support availability zones.       Box 2: No -     Availability zones can be used with many Azure services, not just VMs.       Box 3:No -     Availability Zones are unique physical locations within a single Azure region.",
+      "reference": "https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-regions-with-availability-zones"
+    },
+    {
+      "id": "Question-109",
+      "multi-answer": false,
+      "question": "You plan to create an Azure virtual machine.       You need to identify which storage service must be used to store the unmanaged data disks of the virtual machine.       What should you identify? To answer, select the appropriate service.",
+      "options": [
+        "Containers",
+        "File Shares",
+        "Tables",
+        "Queues"
+      ],
+      "answer": "Containers",
+      "remark": "Azure containers are the backbone of the virtual disks platform for Azure IaaS. Both Azure OS and data disks are implemented as virtual disks where data is durably persisted in the Azure Storage platform and then delivered to the virtual machines for maximum performance. Azure Disks are persisted in Hyper-V VHD format and stored as a page blob in Azure Storage.",
+      "reference": "https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-pageblob-overview"
+    },
+    {
+      "id": "Question-110",
+      "multi-answer": false,
+      "question": "Your company plans to move several servers to Azure.       The company's compliance policy states that a server named FinServer must be on a separate network segment.       You are evaluating which Azure services can be used to meet the compliance policy requirements.       Which Azure solution should you recommend?",
+      "options": [
+        "A. a resource group for FinServer and another resource group for all the other servers",
+        "B. a virtual network for FinServer and another virtual network for all the other servers",
+        "C. a VPN for FinServer and a virtual network gateway for each other server",
+        "D. one resource group for all the servers and a resource lock for FinServer"
+      ],
+      "answer": "B. a virtual network for FinServer and another virtual network for all the other servers",
+      "remark": "Networks in Azure are known as virtual networks. A virtual network can have multiple IP address spaces and multiple subnets. Azure automatically routes traffic between different subnets within a virtual network.       The question states that FinServer must be on a separate network segment. The only way to separate FinServer from the other servers in networking terms is to place the server in a different virtual network to the other servers.",
+      "reference": "https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm"
     }
   ]
 }
