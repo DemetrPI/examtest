@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import {
   Box,
   Button,
+  Text,
+  Radio,
+  RadioGroup,
   Progress,
   useToast,
   VStack,
@@ -26,7 +29,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(20 * 60);
+  const [timeLeft, setTimeLeft] = useState(null);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -36,6 +39,10 @@ const Quiz = () => {
   const [isQuizOver, setIsQuizOver] = useState(false);
   const totalPoints = questions.length * 10;
   const [attemptedToLeave, setAttemptedToLeave] = useState(false);
+  const [quizMode, setQuizMode] = useState(""); // easy, normal, hard
+  const [numQuestions, setNumQuestions] = useState(0); // number of questions based on quiz mode
+  const [timeDuration, setTimeDuration] = useState(0); // time duration based on quiz mode
+  const [isQuizModeSelected, setIsQuizModeSelected] = useState(false);
 
   // Reset the state
   const handleRetake = () => {
@@ -44,9 +51,10 @@ const Quiz = () => {
     setCurrentQuestion(null);
     setSelectedOptions([]);
     setScore(null);
+    setIsStarted(false);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(20 * 60);
+    setTimeLeft(timeDuration);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(null);
@@ -54,30 +62,33 @@ const Quiz = () => {
     setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
+    setQuestions(shuffledQuestions.slice(0, numQuestions));
     setAttemptedToLeave(false);
-    setQuestions(shuffledQuestions.slice(0, 30));
+    setIsQuizModeSelected(null);
   };
 
   // Use the questions data directly
   useEffect(() => {
+    setQuestions([]);
+    setCurrentQuestion(null);
+    setSelectedOptions([]);
+    setScore(0);
+    setIsFinished(false);
+    setIsPaused(false);
+    setTimeLeft(timeDuration);
+    setCurrentQuestionIndex(0);
+    setNumAnswered(0);
+    setIsReview(false);
+    setUserAnswers([]);
+    setTimerKey((prevKey) => prevKey + 1);
+    setCurrentQuestion(questionsData.quiz[0]);
+    setIsQuizOver(false);
+
+    // Fetch and shuffle questions based on the selected quiz mode
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 30));
+    setQuestions(shuffledQuestions.slice(0, numQuestions));
     setCurrentQuestion(shuffledQuestions[0]);
-  }, []);
-
-  // Check on window refresh. 
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-      event.returnValue = "";
-    };
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
-
-
+  }, [quizMode, numQuestions, timeDuration]);
 
   // Function to shuffle an array
   const shuffleArray = (array) => {
@@ -111,7 +122,7 @@ const Quiz = () => {
       });
       return;
     }
-  
+
     let questionScore = 0;
     if (currentQuestion["multi-answer"]) {
       const totalAnswers = currentQuestion.options.length;
@@ -119,10 +130,10 @@ const Quiz = () => {
       const selectedCorrectAnswers = selectedOptions.filter((option) =>
         currentQuestion.answer.includes(option)
       );
-      const selectedWrongAnswers = selectedOptions.filter((option) =>
-        !currentQuestion.answer.includes(option)
+      const selectedWrongAnswers = selectedOptions.filter(
+        (option) => !currentQuestion.answer.includes(option)
       );
-  
+
       if (
         selectedCorrectAnswers.length === totalCorrectAnswers &&
         selectedWrongAnswers.length === 0
@@ -139,10 +150,12 @@ const Quiz = () => {
         questionScore = 10;
       }
     }
-  
+
     // Use function form of setScore
-    setScore((currentScore) => parseFloat((currentScore + questionScore).toFixed(2)));
-  
+    setScore((currentScore) =>
+      parseFloat((currentScore + questionScore).toFixed(2))
+    );
+
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
       setCurrentQuestion(questions[nextQuestionIndex]);
@@ -150,7 +163,7 @@ const Quiz = () => {
     } else {
       handleFinish();
     }
-  
+
     // Add the user's answer to the userAnswers array
     setNumAnswered(numAnswered + 1);
     const answer = {
@@ -159,10 +172,7 @@ const Quiz = () => {
     };
     setUserAnswers([...userAnswers, answer]);
   };
-  
-  
-  
-  
+
   //handle finish function
   const handleFinish = useCallback(() => {
     setIsFinished(true);
@@ -174,34 +184,58 @@ const Quiz = () => {
       "results",
       JSON.stringify([...previousResults, result])
     );
-  }, [score]); // add any other dependencies of handleFinish here
-  
-  
+    window.onblur = null;
+  }, [score]);
+
+  const handleQuizModeSelect = (mode) => setQuizMode(mode);
 
   useEffect(() => {
-    window.onblur = () => {
-      if (attemptedToLeave) {
-        // End the quiz
-        handleFinish();
-      } else {
-        setAttemptedToLeave(true);
-        toast({
-          position: "top",
-          title: "Do not cheat!",
-          description: "Second attempt to leave quiz window before finishing quiz will cause immediate quiz termination!",
-          status: "warning",
-          duration: 5000,
-          isClosable: true,
-        });
-      }
-    };
-    return () => {
+    // Disable window.onblur if the quiz mode is not selected
+    if (!isQuizModeSelected) {
       window.onblur = null;
-    };
-  }, [attemptedToLeave, toast, handleFinish]);
-  
-  
-  
+    }
+
+    // Configure the quiz based on the selected mode
+    if (quizMode === "easy") {
+      setNumQuestions(10);
+      setTimeDuration(20 * 60); // 20 minutes
+    } else if (quizMode === "normal") {
+      setNumQuestions(20);
+      setTimeDuration(20 * 60); // 20 minutes
+      const handleWindowBlur = () => {
+        // Handle window.onblur to prevent leaving the quiz
+        if (attemptedToLeave) {
+          handleFinish();
+        } else {
+          setAttemptedToLeave(true);
+          toast({
+            position: "top",
+            title: "Do not leave the quiz window!",
+            description:
+              "You are not allowed to leave the quiz window during the quiz.",
+            status: "warning",
+            duration: 5000,
+            isClosable: true,
+          });
+        }
+      };
+      window.onblur = handleWindowBlur;
+      return () => {
+        window.onblur = null; // Clean up the event handler on component unmount
+      };
+    } else if (quizMode === "hard") {
+      setNumQuestions(60);
+      setTimeDuration(45 * 60); // 45 minutes
+      const handleWindowBlur = () => {
+        // End the quiz if user tries to leave the window
+        handleFinish();
+      };
+      window.onblur = handleWindowBlur;
+      return () => {
+        window.onblur = null; // Clean up the event handler on component unmount
+      };
+    }
+  }, [quizMode, isQuizModeSelected, attemptedToLeave, toast, handleFinish]);
 
   // Move the current question to the end of the questions array - if user skips the question
   // TODO: repair the skip function, as for now it is possible to answer a question several times on skip
@@ -214,7 +248,6 @@ const Quiz = () => {
     setQuestions(newQuestions);
     setCurrentQuestion(newQuestions[0]);
   };
-  
 
   // Timer pause function
   const handlePauseResume = () => {
@@ -250,9 +283,34 @@ const Quiz = () => {
     <ChakraProvider>
       <VStack spacing={8} align="center" p={8}>
         {!isStarted ? (
-          <Button onClick={() => setIsStarted(true)} colorScheme="green">
-            Start Quiz!
-          </Button>
+          <>
+            {/* Quiz Mode Selection */}
+            <Text>Select Quiz Mode:</Text>
+            <RadioGroup onChange={handleQuizModeSelect} value={quizMode}>
+              <Wrap spacing={4}>
+                <WrapItem>
+                  <Radio value="easy">Easy</Radio>
+                </WrapItem>
+                <WrapItem>
+                  <Radio value="normal">Normal</Radio>
+                </WrapItem>
+                <WrapItem>
+                  <Radio value="hard">Hard</Radio>
+                </WrapItem>
+              </Wrap>
+            </RadioGroup>
+            {/* Start Quiz Button */}
+            <Button
+              onClick={() => {
+                setIsStarted(true);
+                setIsQuizModeSelected(true);
+              }}
+              colorScheme="green"
+              isDisabled={!quizMode}
+            >
+              Start Quiz!
+            </Button>
+          </>
         ) : (
           <>
             {/* Progress Bar */}
@@ -264,7 +322,6 @@ const Quiz = () => {
               borderRadius="5"
               width="75%"
             />
-
             {/* Timer */}
             <SlideFade in={true} offsetY="20px">
               <Timer
@@ -279,7 +336,6 @@ const Quiz = () => {
                 }}
               />
             </SlideFade>
-
             {/* Pause/Resume Button */}
             <Button
               onClick={handlePauseResume}
@@ -287,7 +343,6 @@ const Quiz = () => {
             >
               {isPaused ? "Resume" : "Pause"}
             </Button>
-
             {/* Current Question */}
             {currentQuestion && (
               <SlideFade in={true} offsetY="20px">
@@ -365,14 +420,14 @@ const Quiz = () => {
               py={12}
               mb={2}
             >
-            {/* Result */}
-            {isReview && (
-              <Result
-                score={score}
-                questions={questions}
-                userAnswers={userAnswers}
-              />
-            )}
+              {/* Result */}
+              {isReview && (
+                <Result
+                  score={score}
+                  questions={questions}
+                  userAnswers={userAnswers}
+                />
+              )}
             </Box>
           </>
         )}

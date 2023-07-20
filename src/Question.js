@@ -68,9 +68,7 @@ const Question = ({
  
 
   return (
-    <VStack spacing={4} align="stretch">
-      <Text>{question["id"]}</Text>
-      
+    <VStack spacing={4} align="stretch"> 
       {lines.map((line, index) => (
         <Text key={index}>{line}</Text>
       ))}
