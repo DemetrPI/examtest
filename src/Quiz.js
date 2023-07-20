@@ -9,15 +9,16 @@ import {
   useToast,
   VStack,
   SlideFade,
-  ChakraProvider,
   Wrap,
   WrapItem,
+  useColorMode,
 } from "@chakra-ui/react";
 import Question from "./Question";
 import Timer from "./Timer";
 import Result from "./Result";
 import ResultModal from "./ResultModal";
 import questionsData from "./questMain.json";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 //import questionsData from "./questTest.json";
 
 const Quiz = () => {
@@ -31,7 +32,6 @@ const Quiz = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [timeLeft, setTimeLeft] = useState(null);
   const [isStarted, setIsStarted] = useState(false);
-  const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [numAnswered, setNumAnswered] = useState(0);
@@ -43,6 +43,8 @@ const Quiz = () => {
   const [numQuestions, setNumQuestions] = useState(0); // number of questions based on quiz mode
   const [timeDuration, setTimeDuration] = useState(0); // time duration based on quiz mode
   const [isQuizModeSelected, setIsQuizModeSelected] = useState(false);
+  const { colorMode, toggleColorMode } = useColorMode();
+  const toast = useToast();
 
   // Reset the state
   const handleRetake = () => {
@@ -280,159 +282,162 @@ const Quiz = () => {
 
   const newLocal = "4";
   return (
-    <ChakraProvider>
-      <VStack spacing={8} align="center" p={8}>
-        {!isStarted ? (
-          <>
-            {/* Quiz Mode Selection */}
-            <Text>Select Quiz Mode:</Text>
-            <RadioGroup onChange={handleQuizModeSelect} value={quizMode}>
-              <Wrap spacing={4}>
-                <WrapItem>
-                  <Radio value="easy">Easy</Radio>
-                </WrapItem>
-                <WrapItem>
-                  <Radio value="normal">Normal</Radio>
-                </WrapItem>
-                <WrapItem>
-                  <Radio value="hard">Hard</Radio>
-                </WrapItem>
-              </Wrap>
-            </RadioGroup>
-            {/* Start Quiz Button */}
-            <Button
-              onClick={() => {
-                setIsStarted(true);
-                setIsQuizModeSelected(true);
+    <VStack spacing={8} align="center" p={8}>
+      {/* Button for toggling the color mode */}
+      <Button onClick={toggleColorMode}>
+        {colorMode === "dark" ? <MoonIcon /> : <SunIcon />}
+        {console.log(colorMode)}
+      </Button>
+      {!isStarted ? (
+        <>
+          {/* Quiz Mode Selection */}
+          <Text>Select Quiz Mode:</Text>
+          <RadioGroup onChange={handleQuizModeSelect} value={quizMode}>
+            <Wrap spacing={4}>
+              <WrapItem>
+                <Radio value="easy">Easy</Radio>
+              </WrapItem>
+              <WrapItem>
+                <Radio value="normal">Normal</Radio>
+              </WrapItem>
+              <WrapItem>
+                <Radio value="hard">Hard</Radio>
+              </WrapItem>
+            </Wrap>
+          </RadioGroup>
+          {/* Start Quiz Button */}
+          <Button
+            onClick={() => {
+              setIsStarted(true);
+              setIsQuizModeSelected(true);
+            }}
+            colorScheme="green"
+            isDisabled={!quizMode}
+          >
+            Start Quiz!
+          </Button>
+        </>
+      ) : (
+        <>
+          {/* Progress Bar */}
+          <Progress
+            colorScheme="green"
+            size="md"
+            value={((numAnswered + 1) / questions.length) * 100}
+            isAnimated={true}
+            borderRadius="5"
+            width="75%"
+          />
+          {/* Timer */}
+          <SlideFade in={true} offsetY="20px">
+            <Timer
+              key={timerKey}
+              timeLeft={timeLeft}
+              isPaused={isPaused}
+              isQuizOver={isQuizOver}
+              onFinish={() => {
+                if (!isQuizOver) {
+                  handleFinish();
+                }
               }}
-              colorScheme="green"
-              isDisabled={!quizMode}
-            >
-              Start Quiz!
-            </Button>
-          </>
-        ) : (
-          <>
-            {/* Progress Bar */}
-            <Progress
-              colorScheme="green"
-              size="md"
-              value={((numAnswered + 1) / questions.length) * 100}
-              isAnimated={true}
-              borderRadius="5"
-              width="75%"
             />
-            {/* Timer */}
+          </SlideFade>
+          {/* Pause/Resume Button */}
+          <Button
+            onClick={handlePauseResume}
+            colorScheme={isPaused ? "green" : "red"}
+          >
+            {isPaused ? "Resume" : "Pause"}
+          </Button>
+          {/* Current Question */}
+          {currentQuestion && (
             <SlideFade in={true} offsetY="20px">
-              <Timer
-                key={timerKey}
-                timeLeft={timeLeft}
+              <Question
+                question={currentQuestion}
+                selectedOptions={selectedOptions}
+                onOptionSelect={setSelectedOptions}
+                onSubmit={handleSubmit}
+                onSkip={handleSkip}
                 isPaused={isPaused}
-                isQuizOver={isQuizOver}
-                onFinish={() => {
-                  if (!isQuizOver) {
-                    handleFinish();
-                  }
-                }}
+                isFinished={isQuizOver}
               />
             </SlideFade>
-            {/* Pause/Resume Button */}
-            <Button
-              onClick={handlePauseResume}
-              colorScheme={isPaused ? "green" : "red"}
-            >
-              {isPaused ? "Resume" : "Pause"}
-            </Button>
-            {/* Current Question */}
-            {currentQuestion && (
-              <SlideFade in={true} offsetY="20px">
-                <Question
-                  question={currentQuestion}
-                  selectedOptions={selectedOptions}
-                  onOptionSelect={setSelectedOptions}
-                  onSubmit={handleSubmit}
-                  onSkip={handleSkip}
-                  isPaused={isPaused}
-                  isFinished={isQuizOver}
-                />
-              </SlideFade>
-            )}
-            <ResultModal
-              isOpen={isFinished}
-              onClose={() => setIsFinished(false)}
-              score={score}
-              totalPoints={totalPoints}
-            />
-            {/* Buttons */}
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              width="100%"
-              py={12}
-              mb={2}
-            >
-              <Wrap gap={newLocal}>
-                {(isFinished || isQuizOver) && (
-                  <WrapItem>
-                    <Button onClick={handleRetake} colorScheme="green">
-                      Retake Quiz
-                    </Button>
-                  </WrapItem>
-                )}
-                {(isFinished || isQuizOver) && (
-                  <WrapItem>
-                    <Button
-                      onClick={handleReview}
-                      colorScheme={isReview ? "blue" : "green"}
-                    >
-                      {isReview ? "Hide Results" : "Review Answers"}
-                    </Button>
-                  </WrapItem>
-                )}
-                {(isFinished || isQuizOver) && (
-                  <WrapItem>
-                    <Button
-                      onClick={handleViewPreviousResults}
-                      colorScheme="green"
-                    >
-                      View Previous Quiz Scores
-                    </Button>
-                  </WrapItem>
-                )}
-                {(isFinished || isQuizOver) && (
-                  <WrapItem>
-                    <Button
-                      onClick={handleClearPreviousResults}
-                      colorScheme="gray"
-                    >
-                      Clear Previous Score
-                    </Button>
-                  </WrapItem>
-                )}
-              </Wrap>
-            </Box>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              width="100%"
-              py={12}
-              mb={2}
-            >
-              {/* Result */}
-              {isReview && (
-                <Result
-                  score={score}
-                  questions={questions}
-                  userAnswers={userAnswers}
-                />
+          )}
+          <ResultModal
+            isOpen={isFinished}
+            onClose={() => setIsFinished(false)}
+            score={score}
+            totalPoints={totalPoints}
+          />
+          {/* Buttons */}
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            width="100%"
+            py={12}
+            mb={2}
+          >
+            <Wrap gap={newLocal}>
+              {(isFinished || isQuizOver) && (
+                <WrapItem>
+                  <Button onClick={handleRetake} colorScheme="green">
+                    Retake Quiz
+                  </Button>
+                </WrapItem>
               )}
-            </Box>
-          </>
-        )}
-      </VStack>
-    </ChakraProvider>
+              {(isFinished || isQuizOver) && (
+                <WrapItem>
+                  <Button
+                    onClick={handleReview}
+                    colorScheme={isReview ? "blue" : "green"}
+                  >
+                    {isReview ? "Hide Results" : "Review Answers"}
+                  </Button>
+                </WrapItem>
+              )}
+              {(isFinished || isQuizOver) && (
+                <WrapItem>
+                  <Button
+                    onClick={handleViewPreviousResults}
+                    colorScheme="green"
+                  >
+                    View Previous Quiz Scores
+                  </Button>
+                </WrapItem>
+              )}
+              {(isFinished || isQuizOver) && (
+                <WrapItem>
+                  <Button
+                    onClick={handleClearPreviousResults}
+                    colorScheme="gray"
+                  >
+                    Clear Previous Score
+                  </Button>
+                </WrapItem>
+              )}
+            </Wrap>
+          </Box>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            width="100%"
+            py={12}
+            mb={2}
+          >
+            {/* Result */}
+            {isReview && (
+              <Result
+                score={score}
+                questions={questions}
+                userAnswers={userAnswers}
+              />
+            )}
+          </Box>
+        </>
+      )}
+    </VStack>
   );
 };
 
