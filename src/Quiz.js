@@ -14,8 +14,8 @@ import Question from "./Question";
 import Timer from "./Timer";
 import Result from "./Result";
 import ResultModal from "./ResultModal";
-// import questionsData from "./questMain.json";
-import questionsData from "./questTest.json";
+import questionsData from "./questMain.json";
+//import questionsData from "./questTest.json";
 
 const Quiz = () => {
   // state variables
@@ -26,7 +26,7 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(1 * 10);
+  const [timeLeft, setTimeLeft] = useState(20 * 60);
   const [isStarted, setIsStarted] = useState(false);
   const toast = useToast();
   const [timerKey, setTimerKey] = useState(0);
@@ -35,7 +35,7 @@ const Quiz = () => {
   const [isReview, setIsReview] = useState(false);
   const [isQuizOver, setIsQuizOver] = useState(false);
   const totalPoints = questions.length * 10;
-  // const [attemptedToLeave, setAttemptedToLeave] = useState(false);
+  const [attemptedToLeave, setAttemptedToLeave] = useState(false);
 
   // Reset the state
   const handleRetake = () => {
@@ -46,7 +46,7 @@ const Quiz = () => {
     setScore(null);
     setIsFinished(false);
     setIsPaused(false);
-    setTimeLeft(1 * 10);
+    setTimeLeft(20 * 60);
     setCurrentQuestionIndex(0);
     setNumAnswered(0);
     setIsReview(null);
@@ -54,14 +54,14 @@ const Quiz = () => {
     setTimerKey((prevKey) => prevKey + 1);
     setCurrentQuestion(shuffledQuestions[0]);
     setIsQuizOver(false);
-    // setAttemptedToLeave(false);
-    setQuestions(shuffledQuestions.slice(0, 6));
+    setAttemptedToLeave(false);
+    setQuestions(shuffledQuestions.slice(0, 30));
   };
 
   // Use the questions data directly
   useEffect(() => {
     const shuffledQuestions = shuffleArray(questionsData.quiz);
-    setQuestions(shuffledQuestions.slice(0, 6));
+    setQuestions(shuffledQuestions.slice(0, 30));
     setCurrentQuestion(shuffledQuestions[0]);
   }, []);
 
@@ -178,27 +178,27 @@ const Quiz = () => {
   
   
 
-  // useEffect(() => {
-  //   window.onblur = () => {
-  //     if (attemptedToLeave) {
-  //       // End the quiz
-  //       handleFinish();
-  //     } else {
-  //       setAttemptedToLeave(true);
-  //       toast({
-  //         position: "top",
-  //         title: "Do not cheat!",
-  //         description: "Second attempt to leave quiz window before finishing quiz will cause immediate quiz termination!",
-  //         status: "warning",
-  //         duration: 5000,
-  //         isClosable: true,
-  //       });
-  //     }
-  //   };
-  //   return () => {
-  //     window.onblur = null;
-  //   };
-  // }, [attemptedToLeave, toast, handleFinish]);
+  useEffect(() => {
+    window.onblur = () => {
+      if (attemptedToLeave) {
+        // End the quiz
+        handleFinish();
+      } else {
+        setAttemptedToLeave(true);
+        toast({
+          position: "top",
+          title: "Do not cheat!",
+          description: "Second attempt to leave quiz window before finishing quiz will cause immediate quiz termination!",
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    };
+    return () => {
+      window.onblur = null;
+    };
+  }, [attemptedToLeave, toast, handleFinish]);
   
   
   
@@ -357,7 +357,14 @@ const Quiz = () => {
                 )}
               </Wrap>
             </Box>
-
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              width="100%"
+              py={12}
+              mb={2}
+            >
             {/* Result */}
             {isReview && (
               <Result
@@ -366,6 +373,7 @@ const Quiz = () => {
                 userAnswers={userAnswers}
               />
             )}
+            </Box>
           </>
         )}
       </VStack>
