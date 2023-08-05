@@ -286,7 +286,6 @@ const Quiz = () => {
       {/* Button for toggling the color mode */}
       <Button onClick={toggleColorMode}>
         {colorMode === "dark" ? <MoonIcon /> : <SunIcon />}
-        {console.log(colorMode)}
       </Button>
       {!isStarted ? (
         <>
