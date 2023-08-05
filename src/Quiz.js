@@ -282,6 +282,15 @@ const Quiz = () => {
 
   const newLocal = "4";
   return (
+    <Box
+    p={8}
+    boxShadow="0 8px 20px -5px rgba(0, 128, 128, 0.5)"
+    borderRadius="md"
+    background="teal.50"
+    width="100%"
+    maxWidth="600px"
+    mx="auto"
+  >
     <VStack spacing={8} align="center" p={8}>
       {/* Button for toggling the color mode */}
       <Button onClick={toggleColorMode}>
@@ -437,6 +446,7 @@ const Quiz = () => {
         </>
       )}
     </VStack>
+    </Box>
   );
 };
 
