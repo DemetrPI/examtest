@@ -1,6 +1,6 @@
 # AZ-900 Microsoft Certification Exam Test Preparation
 
-![AZ-900 Exam Test](https://github.com/DemetrPI/examtest/blob/main/az-900.jpg)
+![AZ-900 Exam Test](https://images.credly.com/size/680x680/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png)
 
 Welcome to the AZ-900 Microsoft Certification Exam Test Preparation repository! This repository is designed to help you prepare for the AZ-900 Microsoft Azure Fundamentals certification exam.
 
@@ -41,6 +41,6 @@ We wish you the best of luck in your preparation for the AZ-900 Microsoft Certif
 
 For official exam details and registration, please visit the [Microsoft Azure Certification website](https://learn.microsoft.com/en-us/certifications/exams/az-900).
 
-![Azure Logo](https://github.com/DemetrPI/examtest/blob/main/azure_logo.png)
+![Azure Logo](https://images.credly.com/size/680x680/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png)
 
 *Note: The Azure logo used in this README is the property of Microsoft Corporation.*
