@@ -43,4 +43,4 @@ For official exam details and registration, please visit the [Microsoft Azure Ce
 
 ![Azure Logo](https://images.credly.com/size/680x680/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png)
 
-*Note: The Azure logo used in this README is the property of Microsoft Corporation.*
+*Note: The Microsoft certification logo used in this README is the property of Microsoft Corporation.*
