@@ -21,9 +21,9 @@ The AZ-900 exam is an essential stepping stone for anyone looking to build a car
    git clone https://github.com/DemetrPI/examtest.git
    ```
 
-2. Explore the practice questions provided in the "Practice_Questions" directory to test your knowledge.
+2. Explore the practice questions provided to test your knowledge.
 
-3. Check out the "Study_Materials" directory for curated resources to aid in your preparation.
+3. Check out your skills in three difficulty levels.
 
 4. Engage with the community by opening issues or participating in discussions related to the exam.
 
