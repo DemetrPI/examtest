@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# AZ-900 Microsoft Certification Exam Test Preparation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![AZ-900 Exam Test](https://github.com/DemetrPI/examtest/blob/main/az-900.jpg)
 
-## Available Scripts
+Welcome to the AZ-900 Microsoft Certification Exam Test Preparation repository! This repository is designed to help you prepare for the AZ-900 Microsoft Azure Fundamentals certification exam.
 
-In the project directory, you can run:
+## About the Exam
 
-### `npm start`
+The AZ-900 exam is an essential stepping stone for anyone looking to build a career in cloud computing and Microsoft Azure. This exam measures your foundational knowledge of cloud concepts, core Azure services, security, compliance, privacy, pricing, and support. Passing the AZ-900 exam demonstrates your understanding of fundamental cloud concepts and Azure services.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Sample practice questions to test your knowledge.
+2. Three difficulty levels of the exam
+3. Question reviews and explanations.
 
-### `npm test`
+## How to Use This Repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository to your local machine:
+   ```
+   git clone https://github.com/DemetrPI/examtest.git
+   ```
 
-### `npm run build`
+2. Explore the practice questions provided in the "Practice_Questions" directory to test your knowledge.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Check out the "Study_Materials" directory for curated resources to aid in your preparation.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Engage with the community by opening issues or participating in discussions related to the exam.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `npm run eject`
+If you have any suggestions, improvements, or additional study materials to contribute, feel free to open a pull request. Your contributions are greatly appreciated!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Disclaimer
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This repository is not affiliated with Microsoft, and the materials provided here are meant for educational purposes only. The content may not cover the entirety of the exam topics, so it is essential to use other official study resources as well.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Good Luck!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+We wish you the best of luck in your preparation for the AZ-900 Microsoft Certification Exam. With dedication and thorough preparation, you'll be on your way to becoming a certified Microsoft Azure Fundamentals professional!
 
-## Learn More
+For official exam details and registration, please visit the [Microsoft Azure Certification website](https://learn.microsoft.com/en-us/certifications/exams/az-900).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Azure Logo](https://github.com/DemetrPI/examtest/blob/main/azure_logo.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*Note: The Azure logo used in this README is the property of Microsoft Corporation.*
